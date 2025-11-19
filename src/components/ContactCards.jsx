@@ -61,33 +61,36 @@ const ContactCards = () => {
             href={contact.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative rounded-3xl overflow-hidden shadow-lg hover:shadow-[0_20px_40px_rgba(0,0,0,0.25)] 
+            className="group relative rounded-3xl overflow-hidden shadow-lg 
+                       hover:shadow-[0_20px_40px_rgba(0,0,0,0.25)] 
                        transform hover:-translate-y-2 transition-all duration-700 bg-black/90"
           >
             {/* Background Image */}
             <div
               className="absolute inset-0 bg-cover bg-center scale-105 
-                         group-hover:scale-110 transition-transform duration-[1100ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                         group-hover:scale-110 transition-transform 
+                         duration-&lsqb;1100ms&rsqb; 
+                         ease-&lsqb;cubic-bezier(0.22,1,0.36,1)&rsqb;"
               style={{ backgroundImage: `url(${contact.bgImage})` }}
             ></div>
 
-            {/* Dark Gradient Overlay */}
+            {/* Overlay */}
             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/55 to-black/70 
                             group-hover:from-black/65 group-hover:via-black/60 group-hover:to-black/80 
                             transition-all duration-700"></div>
 
-            {/* Light Glow behind icon */}
+            {/* Glow */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-                            w-40 h-40 bg-white/10 rounded-full blur-2xl opacity-40 group-hover:opacity-60 
-                            transition duration-700"></div>
+                            w-40 h-40 bg-white/10 rounded-full blur-2xl opacity-40 
+                            group-hover:opacity-60 transition duration-700"></div>
 
             {/* Content */}
             <div className="relative z-10 flex flex-col justify-center items-center text-center text-white h-[250px] sm:h-[260px] px-6">
               
-              {/* Icon with Gradient Ring */}
               <div className="relative flex items-center justify-center">
                 <div className="absolute inset-0 bg-gradient-to-r from-secondary to-primary-dark 
-                                rounded-full opacity-60 blur-md group-hover:blur-lg transition-all duration-500"></div>
+                                rounded-full opacity-60 blur-md 
+                                group-hover:blur-lg transition-all duration-500"></div>
 
                 <div className="bg-white text-primary-dark p-4 rounded-full shadow-xl 
                                 group-hover:scale-110 transition-transform duration-300 relative z-10">
@@ -99,8 +102,9 @@ const ContactCards = () => {
                 {contact.title}
               </h3>
 
-              <p className="mt-2 text-sm sm:text-base text-gray-200 group-hover:text-white 
-                            opacity-90 tracking-wide transition-all duration-300">
+              <p className="mt-2 text-sm sm:text-base text-gray-200 
+                            group-hover:text-white opacity-90 tracking-wide 
+                            transition-all duration-300">
                 {contact.description}
               </p>
             </div>
