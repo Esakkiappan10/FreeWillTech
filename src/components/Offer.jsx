@@ -58,7 +58,7 @@ export default function Offer() {
 
       {/* Section Header */}
       <div className="text-center mb-14 relative z-[5]">
-        <p className="text-primary font-bold tracking-wide mb-3 uppercase">
+        <p className="text-blue-600 font-bold tracking-wide mb-3 uppercase">
           WE OFFER BEST IT SERVICES
         </p>
 

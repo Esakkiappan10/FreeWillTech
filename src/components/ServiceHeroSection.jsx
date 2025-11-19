@@ -54,11 +54,11 @@ export default function AboutHero({ style = "apple" }) {
                 ? "bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
                 : style === "glass"
                 ? "text-white drop-shadow-xl"
-                : "text-slate-900"
+                : "text-blue-600"
             }
           `}
         >
-          About FreeWill Technologies
+          About Free Will Technologies
         </motion.h1>
 
         {/* SUBTITLE */}
@@ -79,7 +79,7 @@ export default function AboutHero({ style = "apple" }) {
           className="leading-relaxed text-lg max-w-2xl opacity-90 space-y-5"
         >
           <p>
-            FreeWill Technologies blends engineering, creativity, and emerging
+            Free Will Technologies blends engineering, creativity, and emerging
             intelligence to build products that feel modern, intuitive, and alive.
           </p>
 
@@ -104,7 +104,7 @@ export default function AboutHero({ style = "apple" }) {
         <motion.a
           whileHover={{ scale: 1.06 }}
           whileTap={{ scale: 0.95 }}
-          href="#contact"
+          href="/contact"
           className={`
             inline-block mt-4 font-semibold py-3.5 px-8 rounded-xl transition-all duration-300
             ${
@@ -112,7 +112,7 @@ export default function AboutHero({ style = "apple" }) {
                 ? "bg-cyan-400 text-black shadow-[0_0_25px_rgba(0,255,255,0.6)]"
                 : style === "glass"
                 ? "bg-white/20 backdrop-blur-xl border border-white/30 text-white hover:bg-white/30"
-                : "bg-slate-900 text-white shadow-lg hover:shadow-xl"
+                : "bg-orange-500 text-white shadow-lg hover:shadow-xl"
             }
           `}
         >
@@ -132,7 +132,7 @@ export default function AboutHero({ style = "apple" }) {
         >
           <img
             src="/about.jpg"
-            alt="FreeWill Team"
+            alt="Free Will Team"
             className="rounded-2xl object-cover w-[330px] sm:w-[370px] lg:w-[420px]"
           />
         </div>

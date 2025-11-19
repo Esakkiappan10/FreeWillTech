@@ -91,7 +91,7 @@ export default function AboutCompany() {
               className="px-6 py-3 bg-[#FE861B] text-white rounded-xl font-semibold shadow-md 
               hover:shadow-xl hover:-translate-y-0.5 transition"
             >
-              Contact Sales
+              Contact Us
             </a>
             <a href="/service" className="py-3 text-[#1E9CD7] hover:text-[#FE861B] font-semibold">
               Explore services →
@@ -125,7 +125,7 @@ export default function AboutCompany() {
                 </div>
               </div>
 
-              <h4 className="font-semibold text-slate-900 group-hover:text-[#1E9CD7] transition">
+              <h4 className="font-semibold text-blue-500 group-hover:text-[#1E9CD7] transition">
                 {svc.title}
               </h4>
               <p className="text-slate-600 text-sm mt-1">{svc.desc}</p>

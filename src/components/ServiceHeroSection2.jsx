@@ -112,14 +112,13 @@ export default function ServiceHeroSections() {
           className="relative z-[3] bg-white/40 backdrop-blur-xl p-8 sm:p-10 lg:p-0 lg:bg-transparent lg:backdrop-blur-none"
           data-aos="fade-left"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-slate-900 leading-snug mb-6">
-            Empowering Ideas with Modern  
-            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"> Digital Innovation </span>
+          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-orange-600 leading-relaxed mb-4">
+            Empowering Ideas with Modern Digital Innovation
           </h2>
 
           <p className="text-gray-700 text-lg leading-relaxed mb-5">
             At{" "}
-            <span className="font-semibold text-primary">FreeWill Technologies</span>,  
+            <span className="font-semibold text-primary">Free Will Technologies</span>,  
             we craft world-class digital solutions that elevate brands and empower growth.
           </p>
 
@@ -146,12 +145,12 @@ export default function ServiceHeroSections() {
             whileTap={{ scale: 0.95 }}
             href="/contact"
             className="
-              inline-block bg-primary text-white font-semibold 
+              inline-block bg-blue-600 text-white font-semibold 
               py-3.5 px-8 rounded-xl shadow-md 
               hover:shadow-2xl transition-all duration-300
             "
           >
-            Get in Touch
+            Contact Us
           </motion.a>
         </div>
       </div>

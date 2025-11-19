@@ -43,7 +43,7 @@ export default function CSRShowcase() {
 
         {/* LEFT TEXT BLOCK */}
         <div data-aos="fade-right">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-blue-600 leading-tight">
             Cyber Crime Awareness Drive
           </h2>
 
@@ -55,8 +55,8 @@ export default function CSRShowcase() {
           />
 
           <p className="text-slate-600 mt-6 leading-relaxed text-[16px] md:text-[17px] max-w-xl">
-            Free Will Technologies (FWT), in collaboration with the 
-            <span className="font-semibold text-slate-800">
+            <span className="text-orange-500">Free Will Technologies </span>, in collaboration with the 
+            <span className="font-semibold text-slate-900">
               {" "}PG & Research Department of Computer Science
             </span>{" "}
             at St. Joseph’s College (Autonomous), Tiruchirappalli,

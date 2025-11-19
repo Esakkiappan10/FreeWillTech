@@ -24,7 +24,7 @@ const ContactCards = () => {
     {
       title: "LinkedIn",
       icon: <FaLinkedinIn size={26} />,
-      description: "linkedin.com/company/free-will-technologies",
+      description: "#free-will-technologies",
       href: "https://www.linkedin.com/company/free-will-technologies/",
       bgImage:
         "https://ik.imagekit.io/HoneyJoe/freewill%20technologies%20assetss/10464412.png?updatedAt=1744995811295",
@@ -32,7 +32,7 @@ const ContactCards = () => {
     {
       title: "Instagram",
       icon: <FaInstagram size={26} />,
-      description: "@freewilltechnologies",
+      description: "@freewill_tech",
       href: "https://www.instagram.com/freewill_tech",
       bgImage:
         "https://ik.imagekit.io/HoneyJoe/freewill%20technologies%20assetss/2227.jpg?updatedAt=1744995811112",
@@ -43,7 +43,7 @@ const ContactCards = () => {
     <section className="w-[95%] lg:w-[80%] mx-auto py-12 lg:py-20 font-[Nunito]">
       <div className="text-center mb-12" data-aos="fade-down">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-primary-dark mb-3 drop-shadow-sm">
-          Get in Touch
+          Contact Us
         </h2>
         <p className="text-gray-600 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
           Connect with us on the platform you prefer — our team is always ready to assist.

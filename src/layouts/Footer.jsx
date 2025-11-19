@@ -7,7 +7,6 @@ import { logo } from "../assets/image";
 export default function Footer() {
   return (
     <footer className="relative backdrop-blur-xl bg-white/60 border-t border-gray-200/60 text-gray-700 py-12">
-
       <div className="max-w-[1300px] mx-auto px-[5%]">
 
         {/* Top Row */}
@@ -24,8 +23,11 @@ export default function Footer() {
               <div className="font-extrabold text-lg text-orange-500">
                 Free Will Technologies
               </div>
-              <div className="text-xs text-gray-500">
-                Honest, transparent, results-driven.
+              <div className="text-sm text-blue-600">
+                Empowering Innovation. Enabling the Future.
+              </div>
+              <div className="font-normal text-xs text-orange-600">
+                mail:contact@freewilltech.in
               </div>
             </div>
           </div>
@@ -33,7 +35,7 @@ export default function Footer() {
           {/* Social Icons */}
           <div className="flex items-center gap-4">
             <a
-              href="https://www.linkedin.com/company/free-will-technologies/"
+              href="https://www.linkedin.com/company/free-w-will-technologies/"
               target="_blank"
               className="p-3 rounded-xl bg-white shadow-sm border border-gray-200 hover:bg-[#1E9CD7]/10 hover:border-[#1E9CD7] hover:scale-110 transition-all"
             >
@@ -61,10 +63,20 @@ export default function Footer() {
         {/* Divider */}
         <hr className="border-gray-300/40 my-8" />
 
-        {/* Bottom Text */}
-        <div className="text-center text-sm text-blue-700">
-          © {new Date().getFullYear()} Free Will Technologies — All rights reserved.
+        {/* Address + Copyright */}
+        <div className="text-center space-y-2">
+
+          <p className="text-sm text-gray-600 leading-relaxed max-w-xl mx-auto">
+            <span className="font-bold text-orange-500">Location : </span> Joseph Startup Centre, St. Joseph's College (Autonomous),  
+            near Chatiram Bus Stand, Tiruchirappalli, Tamil Nadu 620002
+          </p>
+
+          <div className="text-sm text-blue-700">
+            © {new Date().getFullYear()} Free Will Technologies — All rights reserved.
+          </div>
+
         </div>
+
       </div>
     </footer>
   );

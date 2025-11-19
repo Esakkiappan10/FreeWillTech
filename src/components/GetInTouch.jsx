@@ -25,10 +25,26 @@ export default function GetInTouch() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form submitted:", formData);
-  };
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  const { name, email, phone, service, message } = formData;
+
+  const mailto = `mailto:contact@freewilltech.in?subject=${encodeURIComponent(
+    "New Inquiry from " + name
+  )}&body=${encodeURIComponent(
+    `Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Service Required: ${service}
+
+Message:
+${message}`
+  )}`;
+
+  window.location.href = mailto;
+};
+
 
   return (
     <section className="relative w-full font-[Nunito] py-20 lg:py-28 px-[5%] overflow-hidden">
@@ -73,7 +89,7 @@ export default function GetInTouch() {
                 <div>
                   <h3 className="text-xl font-bold">Email Us</h3>
                   <p className="text-gray-200 text-sm sm:text-base">
-                    hr@freewilltech.in
+                    contact@freewilltech.in
                   </p>
                 </div>
               </div>
@@ -112,7 +128,7 @@ export default function GetInTouch() {
           className="bg-white rounded-2xl shadow-xl p-8 lg:p-10 border border-gray-100"
         >
           <p className="text-primary font-semibold tracking-wide mb-2">
-            GET IN TOUCH
+            CONTACT US
           </p>
 
           <h2 className="text-3xl sm:text-4xl font-extrabold text-primary-dark leading-snug mb-4">
