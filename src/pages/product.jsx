@@ -5,7 +5,7 @@ import "aos/dist/aos.css";
 import { Briefcase, Rocket, Wrench } from "lucide-react";
 import VisionOSGlassCard from "../components/VisionOSGlassCard";
 import Footer from "../layouts/Footer";
-import Header from "../layouts/NavBar";
+import Header from "../layouts/Navbar";
 
 export default function AboutProductsClients() {
   useEffect(() => {
