@@ -1,9 +1,10 @@
+// AboutHero.jsx — Premium Fonts + Clean Typography + Theme Logic
 import React from "react";
 import { motion } from "framer-motion";
 
 export default function AboutHero({ style = "apple" }) {
   const base =
-    "relative w-[94%] lg:w-[80%] mx-auto py-24 font-[Nunito] flex flex-col lg:flex-row items-center gap-14";
+    "relative w-[94%] lg:w-[80%] mx-auto py-24 flex flex-col lg:flex-row items-center gap-14 font-body";
 
   /* STYLE THEMES */
   const themes = {
@@ -28,7 +29,7 @@ export default function AboutHero({ style = "apple" }) {
     `,
   };
 
-  /* IMAGE STYLE LOGIC BASED ON THEME */
+  /* IMAGE FRAME */
   const imageFrame =
     style === "cyberpunk"
       ? "border border-cyan-400 shadow-[0_0_40px_rgba(0,255,255,0.5)]"
@@ -47,8 +48,7 @@ export default function AboutHero({ style = "apple" }) {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           className={`
-            text-4xl sm:text-5xl lg:text-6xl font-extrabold 
-            leading-tight 
+            text-4xl sm:text-5xl lg:text-6xl font-heading font-extrabold leading-tight
             ${
               style === "cyberpunk"
                 ? "bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
@@ -66,7 +66,7 @@ export default function AboutHero({ style = "apple" }) {
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-xl font-light opacity-90 max-w-xl"
+          className="text-xl font-alt opacity-90 max-w-xl"
         >
           Innovation engineered with precision — and designed for the world ahead.
         </motion.p>
@@ -76,7 +76,7 @@ export default function AboutHero({ style = "apple" }) {
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="leading-relaxed text-lg max-w-2xl opacity-90 space-y-5"
+          className="leading-relaxed text-lg max-w-2xl opacity-90 space-y-5 font-body"
         >
           <p>
             Free Will Technologies blends engineering, creativity, and emerging
@@ -106,7 +106,7 @@ export default function AboutHero({ style = "apple" }) {
           whileTap={{ scale: 0.95 }}
           href="/contact"
           className={`
-            inline-block mt-4 font-semibold py-3.5 px-8 rounded-xl transition-all duration-300
+            inline-block mt-4 font-alt font-semibold py-3.5 px-8 rounded-xl transition-all duration-300
             ${
               style === "cyberpunk"
                 ? "bg-cyan-400 text-black shadow-[0_0_25px_rgba(0,255,255,0.6)]"
@@ -120,12 +120,12 @@ export default function AboutHero({ style = "apple" }) {
         </motion.a>
       </div>
 
-      {/* RIGHT — PROFESSIONAL IMAGE */}
+      {/* RIGHT — IMAGE */}
       <motion.div
         initial={{ opacity: 0, x: 40 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
-        className={`flex-1 flex justify-center`}
+        className="flex-1 flex justify-center"
       >
         <div
           className={`rounded-3xl overflow-hidden p-2 ${imageFrame} bg-white/5`}

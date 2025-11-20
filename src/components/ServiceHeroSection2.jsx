@@ -61,7 +61,7 @@ export default function ServiceHeroSections() {
   const ctaRef = useMagnetic();
 
   return (
-    <section className="relative w-[95%] lg:w-[85%] mx-auto py-20 lg:py-24 font-[Nunito] overflow-hidden">
+    <section className="relative w-[95%] lg:w-[85%] mx-auto py-20 lg:py-24 font-body overflow-hidden">
       
       {/* Ambient Glowing Blobs */}
       <div className="absolute -top-20 -left-10 w-[300px] h-[300px] bg-primary/15 blur-[120px] rounded-full"></div>
@@ -112,30 +112,30 @@ export default function ServiceHeroSections() {
           className="relative z-[3] bg-white/40 backdrop-blur-xl p-8 sm:p-10 lg:p-0 lg:bg-transparent lg:backdrop-blur-none"
           data-aos="fade-left"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-orange-600 leading-relaxed mb-4">
+          <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-heading font-extrabold text-orange-600 leading-snug mb-4">
             Empowering Ideas with Modern Digital Innovation
           </h2>
 
-          <p className="text-gray-700 text-lg leading-relaxed mb-5">
+          <p className="text-gray-700 text-lg leading-relaxed mb-5 font-body">
             At{" "}
-            <span className="font-semibold text-primary">Free Will Technologies</span>,  
+            <span className="font-alt font-semibold text-primary">Free Will Technologies</span>,  
             we craft world-class digital solutions that elevate brands and empower growth.
           </p>
 
-          <p className="text-gray-700 text-lg leading-relaxed mb-5">
+          <p className="text-gray-700 text-lg leading-relaxed mb-5 font-body">
             From
-            <span className="font-semibold text-primary-dark"> custom web apps </span>,
-            <span className="font-semibold text-primary-dark"> full-stack development </span>,
-            <span className="font-semibold text-primary-dark"> CMS platforms </span>,
-            <span className="font-semibold text-primary-dark"> business portfolios </span>,
+            <span className="font-alt font-semibold text-primary-dark"> custom web apps </span>,
+            <span className="font-alt font-semibold text-primary-dark"> full-stack development </span>,
+            <span className="font-alt font-semibold text-primary-dark"> CMS platforms </span>,
+            <span className="font-alt font-semibold text-primary-dark"> business portfolios </span>,
             to  
-            <span className="font-semibold text-primary-dark"> mobile apps </span>,  
+            <span className="font-alt font-semibold text-primary-dark"> mobile apps </span>,  
             we create high-value digital ecosystems that grow with your business.
           </p>
 
-          <p className="text-gray-700 text-lg leading-relaxed mb-8">
+          <p className="text-gray-700 text-lg leading-relaxed mb-8 font-body">
             Our creative wing also delivers premium  
-            <span className="font-semibold text-primary-dark"> branding and graphic design </span>  
+            <span className="font-alt font-semibold text-primary-dark"> branding and graphic design </span>  
             that gives your identity a visually unforgettable presence.
           </p>
 
@@ -145,7 +145,7 @@ export default function ServiceHeroSections() {
             whileTap={{ scale: 0.95 }}
             href="/contact"
             className="
-              inline-block bg-blue-600 text-white font-semibold 
+              inline-block bg-blue-600 text-white font-alt font-semibold 
               py-3.5 px-8 rounded-xl shadow-md 
               hover:shadow-2xl transition-all duration-300
             "

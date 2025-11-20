@@ -4,24 +4,25 @@ import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 export default function VisionOSGlassCard({ children, className = "" }) {
   const ref = useRef(null);
 
-  // Motion values
+  // 3D tilt
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  // 3D tilt transform
   const rotateX = useTransform(y, [-50, 50], [12, -12]);
   const rotateY = useTransform(x, [-50, 50], [-12, 12]);
 
-  // Auto tilt animation
+  /* ----------------------------------
+     AUTO TILT ANIMATION (subtle)
+  ---------------------------------- */
   useEffect(() => {
-    const controlsX = animate(x, 20, {
+    const rotX = animate(x, 20, {
       duration: 5,
       repeat: Infinity,
       repeatType: "reverse",
       ease: "easeInOut",
     });
 
-    const controlsY = animate(y, -15, {
+    const rotY = animate(y, -15, {
       duration: 4,
       repeat: Infinity,
       repeatType: "reverse",
@@ -29,12 +30,14 @@ export default function VisionOSGlassCard({ children, className = "" }) {
     });
 
     return () => {
-      controlsX.stop();
-      controlsY.stop();
+      rotX.stop();
+      rotY.stop();
     };
-  }, [x, y]);
+  }, []);
 
-  // Mouse override
+  /* ----------------------------------
+     MOUSE OVERRIDE
+  ------------------------------------ */
   const handleMove = (e) => {
     const rect = ref.current.getBoundingClientRect();
     x.set(e.clientX - (rect.left + rect.width / 2));
@@ -54,25 +57,51 @@ export default function VisionOSGlassCard({ children, className = "" }) {
       onMouseMove={handleMove}
       onMouseLeave={resetTilt}
     >
-      {/* Outer Glow */}
-      <div className="absolute inset-0 rounded-[28px] bg-gradient-to-br from-white/10 to-white/5 pointer-events-none"></div>
+      {/* ===========================
+          ORANGE → BLUE GRADIENT RIM
+         =========================== */}
+      <div
+        className="absolute -inset-px rounded-[30px] pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(135deg, rgba(255,128,45,0.35), rgba(30,144,213,0.35))",
+          filter: "blur(12px)",
+        }}
+      />
 
-      {/* Floating Particles */}
+      {/* ===========================
+          OUTER GLOW
+      ============================ */}
+      <div
+        className="absolute -inset-1 rounded-[30px] pointer-events-none"
+        style={{
+          boxShadow:
+            "0 18px 45px rgba(30,144,213,0.15), 0 25px 65px rgba(255,128,45,0.12)",
+        }}
+      />
+
+      {/* ===========================
+          FLOATING ORBS (orange + blue)
+      ============================ */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(14)].map((_, i) => (
           <motion.span
             key={i}
-            className="absolute w-[4px] h-[4px] bg-white/40 rounded-full blur-[2px]"
+            className="absolute w-[5px] h-[5px] rounded-full blur-[3px]"
             style={{
+              background:
+                Math.random() > 0.5
+                  ? "rgba(255,128,45,0.55)" // orange particle
+                  : "rgba(30,144,213,0.55)", // blue particle
               top: `${Math.random() * 100}%`,
               left: `${Math.random() * 100}%`,
             }}
             animate={{
               y: ["0%", "-35%"],
-              opacity: [0.1, 0.7, 0],
+              opacity: [0.15, 0.9, 0],
             }}
             transition={{
-              duration: 5 + Math.random() * 3,
+              duration: 4 + Math.random() * 3,
               repeat: Infinity,
               delay: Math.random() * 3,
             }}
@@ -80,28 +109,36 @@ export default function VisionOSGlassCard({ children, className = "" }) {
         ))}
       </div>
 
-      {/* Glass Reflection Sweep */}
+      {/* ===========================
+          GLASS REFLECTION SWEEP
+      ============================ */}
       <motion.div
-        className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-30"
+        className="absolute inset-0 opacity-20 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(90deg, transparent, rgba(255,128,45,0.4), rgba(30,144,213,0.4), transparent)",
+        }}
         animate={{ x: ["-150%", "150%"] }}
         transition={{
           duration: 4,
           repeat: Infinity,
-          repeatDelay: 2,
+          repeatDelay: 3,
           ease: "easeInOut",
         }}
       />
 
-      {/* MAIN DARK GLASS */}
+      {/* ===========================
+         MAIN DARK GLASS SURFACE
+      ============================ */}
       <div
         className="
-        relative z-10 
-        bg-black/55 
-        backdrop-blur-2xl 
-        border border-white/15 
-        rounded-[26px] 
-        shadow-[0_12px_40px_rgba(0,0,0,0.25)]
-      "
+          relative z-10 
+          bg-black/20
+          backdrop-blur-2xl 
+          border border-white/10 
+          rounded-[26px]
+          shadow-[0_12px_40px_rgba(0,0,0,0.35)]
+        "
       >
         {children}
       </div>
