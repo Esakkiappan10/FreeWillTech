@@ -1,188 +1,242 @@
-// Enhanced Premium Compact Unified Navigation Header.jsx
-import React, { useState, useEffect, useRef } from "react";
-import { Phone, Mail, Menu, X, Linkedin, Instagram } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { Menu, X, Linkedin, Instagram, Mail, Clock, Phone, ChevronRight } from "lucide-react";
 import logo from "../assets/fulllogo.png";
 
-/* Touch Detection */
-const isTouchDevice = () =>
-  "ontouchstart" in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+/**
+ * Premium Dual-Layer Header
+ * - Top Bar: Contact & Socials (Dark Theme)
+ * - Main Bar: Logo & Navigation (Glassmorphic Sticky)
+ */
 
-/* Magnetic Hover Hook */
-function useMagnetic() {
-  const ref = useRef(null);
+const navLinks = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Services", path: "/service" },
+  { name: "Products", path: "/products" },
+  { name: "Careers", path: "/careers" }, // Added for completeness based on footer
+  { name: "Contact", path: "/contact" },
+];
 
-  useEffect(() => {
-    if (isTouchDevice()) return;
-    const el = ref.current;
-    if (!el) return;
-
-    const strength = 26;
-
-    const move = (e) => {
-      const rect = el.getBoundingClientRect();
-      const x = e.clientX - (rect.left + rect.width / 2);
-      const y = e.clientY - (rect.top + rect.height / 2);
-      el.style.transform = `translate(${x / strength}px, ${y / strength}px)`;
-    };
-
-    const reset = () => (el.style.transform = "translate(0,0)");
-
-    el.addEventListener("mousemove", move);
-    el.addEventListener("mouseleave", reset);
-
-    return () => {
-      el.removeEventListener("mousemove", move);
-      el.removeEventListener("mouseleave", reset);
-    };
-  }, []);
-
-  return ref;
-}
+const socialLinks = [
+  { icon: Linkedin, href: "https://www.linkedin.com/company/free-will-technologies/", color: "hover:bg-[#0077b5]" },
+  { icon: Instagram, href: "https://www.instagram.com/freewill_tech/", color: "hover:bg-[#E1306C]" },
+];
 
 export default function Header() {
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+  const { scrollY } = useScroll();
+  
+  // Hide Top Bar on scroll behavior logic
+  const topBarHeight = useTransform(scrollY, [0, 50], ["48px", "0px"]);
+  const topBarOpacity = useTransform(scrollY, [0, 30], [1, 0]);
+  const topBarOverFlow = useTransform(scrollY, [0, 50], ["visible", "hidden"]);
 
-  const links = [
-    { name: "Home", path: "/" },
-    { name: "About Us", path: "/about" },
-    { name: "Products", path: "/products"},
-    { name: "Services", path: "/service" },
-    { name: "Testimonials", path: "/testimonials" },
-     { name: "CSR Activities", path: "/csr" },
-    { name: "Contact", path: "/contact" },
-    { name: "Resume Builder", path: "/resume" },
-  ];
+  // Detect scroll for glass effect on main nav
+  useEffect(() => {
+    const updateScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", updateScroll);
+    return () => window.removeEventListener("scroll", updateScroll);
+  }, []);
 
-  /* Auto close mobile menu on route change */
-  useEffect(() => setOpen(false), [location]);
+  // Close mobile menu on route change
+  useEffect(() => setIsOpen(false), [location]);
 
   return (
-    <header className="fixed w-full top-0 z-50 bg-white/80 backdrop-blur-xl shadow-sm border-b border-gray-100 font-[Nunito] transition-all">
-  <div className="max-w-[1400px] mx-auto px-[5%] py-3 flex items-center justify-between gap-4">
-
-
-        {/* Logo */}
-        <Link to="/" className="flex items-center">
-          <motion.img
-            src={logo}
-            alt="FreeWillTech"
-            className="h-14 w-auto drop-shadow-sm"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.92 }}
-          />
-        </Link>
-
-        {/* Desktop Menu */}
-        <ul className="hidden lg:flex gap-7 xl:gap-8 items-center text-[14px] font-medium">
-
-          {links.map((l) => {
-            const ref = useMagnetic();
-            const active = location.pathname === l.path;
-            return (
-              <li key={l.name} className="relative">
-                <Link
-                  ref={ref}
-                  to={l.path}
-                  className={`transition-all ${active ? "text-primary font-semibold" : "text-gray-700 hover:text-primary"}`}
-                >
-                  <motion.span whileHover={{ scale: 1.12 }}>{l.name}</motion.span>
-
-                  <motion.div
-                    className="absolute bottom-[-4px] left-0 h-[2px] bg-primary rounded"
-                    initial={{ width: 0 }}
-                    animate={{ width: active ? "100%" : 0 }}
-                    whileHover={{ width: "100%" }}
-                    transition={{ duration: 0.25 }}
-                  />
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* Right Contact Block */}
-        <div className="hidden lg:flex items-center gap-5">
-
+    <>
+      {/* --- TOP BAR (Contact & Socials) --- */}
+      <motion.div 
+        style={{ height: topBarHeight, opacity: topBarOpacity, overflow: topBarOverFlow }}
+        className="bg-[#0B1120] text-slate-300 text-[11px] sm:text-xs font-medium z-[60] relative border-b border-white/5 hidden lg:block"
+      >
+        <div className="max-w-[1400px] mx-auto px-6 h-full flex justify-between items-center">
           
-      <div className="flex items-center gap-3.5">
-        <a
-          className="social-btn bg-[#E6F2FF] hover:bg-[#1E9CD7]"
-          href="https://www.linkedin.com/company/free-will-technologies/"
-          target="_blank"
-        >
-          <Linkedin className="icon text-[#1E9CD7] hover:text-white" />
-        </a>
+          {/* Left: Contact Details */}
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-2">
+               <Clock size={12} className="text-[#FE861B]" />
+               <span>Mon – Fri, 10:00 AM – 7:00 PM</span>
+            </div>
+            <div className="w-[1px] h-3 bg-slate-700" />
+            <a href="mailto:contact@freewilltech.in" className="flex items-center gap-2 hover:text-white transition-colors">
+               <Mail size={12} className="text-[#1E9CD7]" />
+               <span>contact@freewilltech.in</span>
+            </a>
+            <div className="w-[1px] h-3 bg-slate-700" />
+            <a href="tel:+919626806328" className="flex items-center gap-2 hover:text-white transition-colors">
+               <Phone size={12} className="text-[#1E9CD7]" />
+               <span>+91 96268 06328</span>
+            </a>
+          </div>
 
-        <a
-          className="social-btn bg-[#FFF1F3] hover:bg-[#D1005C]"
-          href="https://www.instagram.com/freewill_tech/"
-          target="_blank"
-        >
-          <Instagram className="icon text-[#D1005C] hover:text-white" />
-        </a>
-      </div>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button className="lg:hidden p-2 flex items-center justify-center" onClick={() => setOpen(!open)}>
-          {open ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
-        </button>
-      </div>
-
-      {/* Mobile Dropdown */}
-      <AnimatePresence>
-        {open && (
-         <motion.div
-  initial={{ opacity: 0, y: -10 }}
-  animate={{ opacity: 1, y: 0 }}
-  exit={{ opacity: 0, y: -10 }}
-  className="lg:hidden bg-white/90 backdrop-blur-xl shadow-xl rounded-b-2xl border-t border-gray-200"
->
-  <ul className="flex flex-col items-center gap-5 py-7">
-              {links.map((l) => (
-                <li key={l.name}>
-                  <Link
-                    to={l.path}
-                    className="text-gray-700 text-lg font-medium hover:text-primary transition"
+          {/* Right: Socials */}
+          <div className="flex items-center gap-3">
+             <span>Follow Us:</span>
+             <div className="flex gap-2">
+                {socialLinks.map((item, i) => (
+                  <a 
+                    key={i} 
+                    href={item.href} 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className={`p-1 rounded bg-slate-800 text-white transition-colors ${item.color}`}
                   >
-                    {l.name}
-                  </Link>
-                </li>
-              ))}
+                    <item.icon size={12} />
+                  </a>
+                ))}
+             </div>
+          </div>
 
-              {/* Compact Contact For Mobile */}
-              <div className="flex gap-7 mt-4">
+        </div>
+      </motion.div>
 
-                <a href="tel:+919626806328"><Phone className="w-6 h-6 text-primary" /></a>
-                <a href="mailto:contact@freewilltech.in"><Mail className="w-6 h-6 text-primary" /></a>
-                <a href="https://wa.me/919626806328" target="_blank"><FaWhatsapp className="w-6 h-6 text-green-500" /></a>
+      {/* --- MAIN NAVIGATION (Sticky) --- */}
+      <header 
+        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+          isScrolled 
+            ? "bg-white/80 backdrop-blur-xl border-b border-slate-200/60 shadow-sm h-20" 
+            : "bg-white/60 backdrop-blur-md h-24"
+        }`}
+      >
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+          
+          {/* Logo */}
+          <Link to="/" className="flex-shrink-0 group">
+            <img 
+              src={logo} 
+              alt="Free Will Technologies" 
+              className={`w-auto transition-all duration-300 ${isScrolled ? "h-10" : "h-12"}`} 
+            />
+          </Link>
+
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-1">
+            {navLinks.map((link) => {
+              const isActive = location.pathname === link.path;
+              return (
+                <Link 
+                  key={link.name} 
+                  to={link.path}
+                  className="relative px-4 py-2 group"
+                >
+                  <span className={`relative z-10 text-sm font-semibold transition-colors duration-300 ${
+                    isActive ? "text-[#1E9CD7]" : "text-slate-600 group-hover:text-slate-900"
+                  }`}>
+                    {link.name}
+                  </span>
+                  
+                  {/* Active Indicator */}
+                  {isActive && (
+                    <motion.div 
+                      layoutId="nav-pill"
+                      className="absolute inset-0 bg-blue-50 rounded-full -z-0"
+                      transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                    />
+                  )}
+                  
+                  {/* Hover Indicator (if not active) */}
+                  {!isActive && (
+                     <span className="absolute bottom-1 left-4 right-4 h-[2px] bg-[#FE861B] scale-x-0 group-hover:scale-x-100 transition-transform duration-300 ease-out origin-left rounded-full" />
+                  )}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* CTA & Mobile Toggle */}
+          <div className="flex items-center gap-4">
+            <button 
+              onClick={() => setIsOpen(!isOpen)}
+              className="lg:hidden p-2 text-slate-800 hover:bg-slate-100 rounded-full transition-colors"
+            >
+              {isOpen ? <X /> : <Menu />}
+            </button>
+          </div>
+
+        </div>
+      </header>
+
+      {/* --- MOBILE MENU DRAWER --- */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            {/* Backdrop */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden"
+            />
+            
+            {/* Drawer */}
+            <motion.div 
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="fixed top-0 right-0 h-full w-[280px] bg-white z-50 shadow-2xl lg:hidden flex flex-col"
+            >
+              {/* Header */}
+              <div className="p-6 flex items-center justify-between border-b border-slate-100">
+                 <span className="font-bold text-slate-900">Menu</span>
+                 <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-slate-50 rounded-full">
+                    <X size={20} className="text-slate-500" />
+                 </button>
               </div>
-            </ul>
-          </motion.div>
+
+              {/* Links */}
+              <div className="flex-1 overflow-y-auto p-6 py-8">
+                 <ul className="flex flex-col gap-4">
+                    {navLinks.map((link, i) => (
+                       <motion.li 
+                         key={link.name}
+                         initial={{ opacity: 0, x: 20 }}
+                         animate={{ opacity: 1, x: 0 }}
+                         transition={{ delay: i * 0.05 }}
+                       >
+                          <Link 
+                            to={link.path} 
+                            className={`text-lg font-medium block py-2 ${
+                                location.pathname === link.path ? "text-[#1E9CD7]" : "text-slate-600"
+                            }`}
+                          >
+                             {link.name}
+                          </Link>
+                       </motion.li>
+                    ))}
+                 </ul>
+              </div>
+
+              {/* Mobile Footer (Contact Info migrated here) */}
+              <div className="p-6 bg-slate-50 border-t border-slate-100 space-y-4">
+                 <div className="space-y-3 text-sm text-slate-600">
+                    <div className="flex items-center gap-3">
+                       <Mail size={16} className="text-[#FE861B]" />
+                       <span>contact@freewilltech.in</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                       <Phone size={16} className="text-[#1E9CD7]" />
+                       <span>+91 96268 06328</span>
+                    </div>
+                 </div>
+
+                 <div className="flex gap-2 pt-2">
+                    {socialLinks.map((item, i) => (
+                        <a key={i} href={item.href} className="p-2 bg-white border border-slate-200 rounded-lg text-slate-600">
+                           <item.icon size={18} />
+                        </a>
+                    ))}
+                 </div>
+              </div>
+
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-
-      {/* Social Button Styles */}
-      <style>{`
-        .social-btn {
-          width: 36px;
-          height: 36px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 10px;
-          transition: all .3s ease;
-        }
-        .icon {
-          width: 18px;
-          height: 18px;
-          transition: color .3s ease;
-        }
-      `}</style>
-    </header>
+    </>
   );
 }

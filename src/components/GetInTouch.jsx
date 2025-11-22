@@ -1,17 +1,12 @@
-import React, { useState } from "react";
-import { Mail, Phone } from "lucide-react";
-import { motion } from "framer-motion";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.7, ease: "easeOut" },
-  },
-};
+// GetInTouch.jsx
+import React, { useState, useRef } from "react";
+import { Mail, Phone, ArrowRight, MapPin } from "lucide-react";
+import { motion, useInView } from "framer-motion";
 
 export default function GetInTouch() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,196 +20,161 @@ export default function GetInTouch() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-const handleSubmit = (e) => {
-  e.preventDefault();
-
-  const { name, email, phone, service, message } = formData;
-
-  const mailto = `mailto:contact@freewilltech.in?subject=${encodeURIComponent(
-    "New Inquiry from " + name
-  )}&body=${encodeURIComponent(
-    `Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Service Required: ${service}
-
-Message:
-${message}`
-  )}`;
-
-  window.location.href = mailto;
-};
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, email, phone, service, message } = formData;
+    const mailto = `mailto:contact@freewilltech.in?subject=${encodeURIComponent(
+      "New Inquiry from " + name
+    )}&body=${encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService Required: ${service}\n\nMessage:\n${message}`
+    )}`;
+    window.location.href = mailto;
+  };
 
   return (
-    <section className="relative w-full font-[Nunito] py-20 lg:py-28 px-[5%] overflow-hidden">
+    <section ref={ref} className="relative py-24 lg:py-32 px-6 bg-white overflow-hidden">
+      
+      {/* --- Ambient Background (Matching Offer/About) --- */}
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#1E9CD7]/5 rounded-full blur-[120px] pointer-events-none mix-blend-multiply" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#FE861B]/5 rounded-full blur-[120px] pointer-events-none mix-blend-multiply" />
 
-      {/* Ambient Glow Left */}
-      <div className="absolute -left-10 top-20 w-[300px] h-[300px] bg-primary/15 blur-[120px] rounded-full pointer-events-none" />
-
-      {/* Ambient Glow Right */}
-      <div className="absolute -right-10 bottom-10 w-[320px] h-[320px] bg-secondary/20 blur-[140px] rounded-full pointer-events-none" />
-
-      <div className="relative max-w-[1350px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-14 items-stretch z-[5]">
-
-        {/* LEFT — CONTACT CARD (Premium Glass Section) */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="relative rounded-3xl overflow-hidden shadow-xl bg-black/20 backdrop-blur-2xl border border-white/10 flex flex-col justify-end"
-        >
-          {/* Background */}
-          <img
-            src="/aboutus.jpg"
-            alt="freewill bg"
-            className="absolute inset-0 w-full h-full object-cover opacity-[0.35]"
-          />
-
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/60 to-black/80" />
-
-          {/* Foreground Content */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="relative z-10 text-white p-10 lg:p-12 flex flex-col space-y-10"
+      <div className="max-w-[1300px] mx-auto relative z-10">
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+          
+          {/* LEFT: Info & Context */}
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+            className="space-y-12"
           >
-            {/* Contact Info */}
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <Mail className="text-secondary" size={30} />
-                <div>
-                  <h3 className="text-xl font-bold">Email Us</h3>
-                  <p className="text-gray-200 text-sm sm:text-base">
-                    contact@freewilltech.in
-                  </p>
-                </div>
-              </div>
+             <div>
+                <span className="inline-block py-1 px-3 rounded-full bg-blue-50 border border-blue-100 text-[#1E9CD7] font-bold tracking-widest uppercase text-[10px] mb-6">
+                    Contact Us
+                </span>
+                <h2 className="text-5xl lg:text-7xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6">
+                  Let’s start a <br />
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1E9CD7] to-[#FE861B]">
+                    conversation.
+                  </span>
+                </h2>
+                <p className="text-slate-500 text-lg md:text-xl max-w-md leading-relaxed">
+                  Have a project in mind? Share your ideas with us. We help you build something scalable, beautiful, and functional.
+                </p>
+             </div>
 
-              <div className="flex items-center gap-4">
-                <Phone className="text-secondary" size={30} />
-                <div>
-                  <h3 className="text-xl font-bold">Call Us</h3>
-                  <p className="text-gray-200 text-sm sm:text-base">
-                    +91 96268 06328
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Button */}
-            <motion.a
-              href="https://wa.me/919626806328"
-              target="_blank"
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.92 }}
-              className="inline-block border-2 border-white py-3 px-6 rounded-xl font-semibold hover:bg-white hover:text-secondary transition-all duration-300 shadow-lg w-fit"
-            >
-              Chat on WhatsApp
-            </motion.a>
+             <div className="space-y-6">
+                <ContactCard 
+                    icon={Mail} 
+                    label="Email Us" 
+                    value="contact@freewilltech.in" 
+                    href="mailto:contact@freewilltech.in"
+                    color="text-[#FE861B]"
+                />
+                <ContactCard 
+                    icon={Phone} 
+                    label="Call Us" 
+                    value="+91 96268 06328" 
+                    href="tel:+919626806328"
+                    color="text-[#1E9CD7]"
+                />
+             </div>
           </motion.div>
-        </motion.div>
 
-        {/* RIGHT — CONTACT FORM (Animated, Premium Inputs) */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true }}
-          className="bg-white rounded-2xl shadow-xl p-8 lg:p-10 border border-gray-100"
-        >
-          <p className="text-primary font-semibold tracking-wide mb-2">
-            CONTACT US
-          </p>
+          {/* RIGHT: Premium Form */}
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] border border-slate-100 relative"
+          >
+             {/* Decorative Corner */}
+             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-[#1E9CD7]/5 to-transparent rounded-tr-[2.5rem] pointer-events-none" />
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-primary-dark leading-snug mb-4">
-            Let’s Build Something Great Together
-          </h2>
+             <form onSubmit={handleSubmit} className="flex flex-col gap-8 relative z-10">
+                <div className="grid md:grid-cols-2 gap-8">
+                   <InputGroup name="name" placeholder="Your Name" value={formData.name} onChange={handleChange} />
+                   <InputGroup name="email" type="email" placeholder="Email Address" value={formData.email} onChange={handleChange} />
+                </div>
+                
+                <div className="grid md:grid-cols-2 gap-8">
+                   <InputGroup name="phone" type="tel" placeholder="Phone Number" value={formData.phone} onChange={handleChange} />
+                   <div className="relative pt-4 group">
+                       <select 
+                           name="service" 
+                           value={formData.service} 
+                           onChange={handleChange}
+                           required
+                           className="w-full bg-transparent border-b border-slate-200 py-3 text-slate-900 font-medium focus:outline-none focus:border-[#1E9CD7] transition-colors appearance-none cursor-pointer"
+                       >
+                           <option value="" disabled>Select a Service</option>
+                           <option value="Web Development">Web Development</option>
+                           <option value="App Development">App Development</option>
+                           <option value="IT Solutions">IT Solutions</option>
+                           <option value="Design & Branding">Design & Branding</option>
+                       </select>
+                       {/* Animated Line for Select */}
+                       <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#1E9CD7] transition-all duration-300 group-focus-within:w-full" />
+                   </div>
+                </div>
 
-          <p className="text-gray-600 mb-8 text-sm sm:text-base">
-            Share your ideas with us — we’ll respond quickly and help you get started.
-          </p>
+                <div className="pt-4 group relative">
+                   <textarea 
+                       name="message" 
+                       placeholder="Tell us about your project..." 
+                       value={formData.message} 
+                       onChange={handleChange}
+                       required
+                       rows={4}
+                       className="w-full bg-transparent border-b border-slate-200 py-3 text-slate-900 font-medium focus:outline-none focus:border-[#1E9CD7] transition-colors resize-none placeholder:text-slate-400/80"
+                   />
+                   <div className="absolute bottom-2 left-0 w-0 h-[2px] bg-[#1E9CD7] transition-all duration-300 group-focus-within:w-full" />
+                </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Name + Email */}
-            <div className="grid sm:grid-cols-2 gap-5">
-              <motion.input
-                whileFocus={{ scale: 1.02 }}
-                type="text"
-                name="name"
-                placeholder="Your Full Name *"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-300 px-4 py-3 rounded-lg text-sm focus:ring-2 focus:ring-primary-dark outline-none transition-all"
-              />
-              <motion.input
-                whileFocus={{ scale: 1.02 }}
-                type="email"
-                name="email"
-                placeholder="name@example.com *"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-300 px-4 py-3 rounded-lg text-sm focus:ring-2 focus:ring-primary-dark outline-none transition-all"
-              />
-            </div>
+                <motion.button
+                   whileHover={{ scale: 1.02, y: -2 }}
+                   whileTap={{ scale: 0.98 }}
+                   type="submit"
+                   className="mt-6 py-5 px-8 bg-slate-900 text-white rounded-2xl font-bold text-lg flex items-center justify-center gap-3 hover:bg-[#FE861B] transition-all duration-300 shadow-xl shadow-slate-900/10 hover:shadow-orange-500/20"
+                >
+                   Send Message <ArrowRight size={20} />
+                </motion.button>
+             </form>
+          </motion.div>
 
-            {/* Phone + Dropdown */}
-            <div className="grid sm:grid-cols-2 gap-5">
-              <motion.input
-                whileFocus={{ scale: 1.02 }}
-                type="tel"
-                name="phone"
-                placeholder="+91 xxxxxxxxxx *"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-300 px-4 py-3 rounded-lg text-sm focus:ring-2 focus:ring-primary-dark outline-none transition-all"
-              />
-
-              <motion.select
-                whileFocus={{ scale: 1.02 }}
-                name="service"
-                value={formData.service}
-                onChange={handleChange}
-                required
-                className="w-full border border-gray-300 px-4 py-3 rounded-lg text-gray-500 text-sm focus:ring-2 focus:ring-primary-dark outline-none transition-all"
-              >
-                <option value="" disabled>Select a Service *</option>
-                <option value="Web Development">Web Development</option>
-                <option value="App Development">App Development</option>
-                <option value="IT Solutions">IT Solutions</option>
-              </motion.select>
-            </div>
-
-            {/* Message */}
-            <motion.textarea
-              whileFocus={{ scale: 1.02 }}
-              name="message"
-              placeholder="Tell us about your idea or need *"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              className="w-full border border-gray-300 px-4 py-3 rounded-lg h-32 text-sm focus:ring-2 focus:ring-primary-dark outline-none transition-all"
-            />
-
-            {/* Submit Button */}
-            <motion.button
-              type="submit"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.92 }}
-              className="w-full bg-primary-dark text-white py-3 sm:py-4 rounded-lg font-bold hover:bg-secondary transition-all duration-300 shadow-lg"
-            >
-              Send Message
-            </motion.button>
-          </form>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 }
+
+// Sub-components for cleaner code
+
+const ContactCard = ({ icon: Icon, label, value, href, color }) => (
+    <a href={href} className="flex items-center gap-6 p-5 rounded-3xl bg-slate-50 border border-slate-100 hover:border-blue-100 hover:bg-white hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300 group">
+        <div className={`w-14 h-14 rounded-2xl bg-white flex items-center justify-center shadow-sm ${color} group-hover:scale-110 transition-transform duration-300`}>
+            <Icon size={24} />
+        </div>
+        <div>
+            <p className="text-xs text-slate-400 uppercase font-bold tracking-wider mb-1">{label}</p>
+            <p className="text-slate-900 font-bold text-lg md:text-xl group-hover:text-[#1E9CD7] transition-colors">{value}</p>
+        </div>
+    </a>
+);
+
+const InputGroup = ({ name, type = "text", placeholder, value, onChange }) => (
+    <div className="relative pt-4 group">
+        <input 
+            type={type}
+            name={name}
+            value={value}
+            onChange={onChange}
+            required
+            placeholder={placeholder}
+            className="w-full bg-transparent border-b border-slate-200 py-3 text-slate-900 font-medium focus:outline-none focus:border-[#1E9CD7] transition-colors placeholder:text-slate-400/80"
+        />
+        {/* Animated Line */}
+        <div className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#1E9CD7] transition-all duration-300 group-focus-within:w-full" />
+    </div>
+);

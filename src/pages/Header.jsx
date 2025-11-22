@@ -1,226 +1,176 @@
 // src/pages/Header.jsx
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import anime from "animejs";
 import SplitText from "../components/SplitText";
-import FloatingLines from "../components/FloatingLines";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowDownRight } from "lucide-react";
 
-const isTouch = () =>
-  typeof window !== "undefined" &&
-  ("ontouchstart" in window ||
-    navigator.maxTouchPoints > 0 ||
-    navigator.msMaxTouchPoints > 0);
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
+  }
+};
 
-function NeonParticles() {
+export default function Header() {
+  const shouldReduceMotion = useReducedMotion();
+
   useEffect(() => {
-    const particles = Array.from(document.querySelectorAll(".neon-particle"));
+    if (shouldReduceMotion) return;
 
-    const animate = () => {
+    anime({
+      targets: ".gradient-text",
+      backgroundPositionX: ["0%", "200%"],
+      easing: "linear",
+      duration: 8000,
+      loop: true,
+    });
+
+    const particles = Array.from(document.querySelectorAll(".neon-particle"));
+    const animateParticles = () => {
       particles.forEach((p, i) => {
         anime({
           targets: p,
           translateX: anime.random(-20, 20),
           translateY: anime.random(-10, 10),
-          opacity: anime.random(0.3, 1),
-          scale: anime.random(0.7, 1.4),
+          opacity: anime.random(0.3, 0.8),
+          scale: anime.random(0.7, 1.2),
           easing: "easeInOutQuad",
-          duration: anime.random(1000, 2400),
+          duration: anime.random(1500, 3000),
           delay: i * 80,
         });
       });
     };
 
-    animate();
-    const id = setInterval(animate, 2500);
+    animateParticles();
+    const id = setInterval(animateParticles, 2500);
     return () => clearInterval(id);
-  }, []);
-
-  return (
-    <div className="absolute inset-0 -z-10 pointer-events-none">
-      {Array.from({ length: 22 }).map((_, i) => (
-        <div
-          key={i}
-          className="neon-particle absolute rounded-full blur-xl"
-          style={{
-            top: `${Math.random() * 100}%`,
-            left: `${Math.random() * 100}%`,
-            width: `${8 + Math.random() * 12}px`,
-            height: `${8 + Math.random() * 12}px`,
-            background: `radial-gradient(circle, rgba(0,180,255,0.9), transparent)`,
-            opacity: 0.4,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
-export default function Header() {
-  const shouldReduceMotion = useReducedMotion();
-
-  const gradientAnimation = {
-    background:
-      "linear-gradient(90deg, #ff7a18, #ff9e2c, #3ba3f8, #1e71ff, #ff7a18)",
-    backgroundSize: "300% 300%",
-    WebkitBackgroundClip: "text",
-    WebkitTextFillColor: "transparent",
-  };
-
-  useEffect(() => {
-    if (shouldReduceMotion) return;
-    anime({
-      targets: ".gradient-text",
-      backgroundPositionX: ["0%", "200%"],
-      easing: "linear",
-      duration: 9000,
-      loop: true,
-    });
-  }, [shouldReduceMotion]);
-
-  useEffect(() => {
-    if (shouldReduceMotion) return;
-    const animation = anime({
-      targets: ".cta-glow",
-      boxShadow: [
-        "0 0 0px rgba(0,200,255,0)",
-        "0 0 28px rgba(0,200,255,0.5)",
-        "0 0 48px rgba(0,200,255,0.35)",
-      ],
-      easing: "easeInOutQuad",
-      duration: 2600,
-      direction: "alternate",
-      loop: true,
-    });
-    return () => animation.pause();
   }, [shouldReduceMotion]);
 
   return (
-    <header className="relative w-full min-h-screen bg-transparent overflow-hidden">
-      {/* Floating tech lines */}
-      <div className="absolute inset-0 -z-10 pointer-events-none opacity-[1]">
-        <FloatingLines
-          enabledWaves={["top", "middle", "bottom"]}
-          lineCount={[11, 11, 18]}
-          lineDistance={[5, 2, 4]}
-          animationSpeed={0.65}
-          interactive={true}
-          parallax={true}
-          bendStrength={-0.19}
-          bendRadius={7.2}
-          mouseDamping={0.09}
-          lineThickness={0.4}
-          linesGradient={["#cfe8ff", "#d9eeff", "#e6f3ff", "#f0f8ff"]}
-          topWavePosition={{ x: 8.2, y: 0.3, rotate: -0.19 }}
-          middleWavePosition={{ x: 4.1, y: 0.0, rotate: 0.04 }}
-          bottomWavePosition={{ x: 2.0, y: -0.5, rotate: 0.15 }}
-          mixBlendMode="screen"
+    <header className="relative w-full min-h-screen flex flex-col justify-center items-center px-6 py-16 overflow-hidden">
+
+      {/* BACKGROUND IMAGE */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="/hero.jpg"
+          alt="Hero Background"
+          className="w-full h-full object-cover opacity-70 pointer-events-none select-none"
         />
       </div>
 
-      {/* Main container */}
-      <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6 pt-24 md:pt-32 pb-20 md:pb-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* Smooth white fade overlay */}
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-white/40 via-white/60 to-white/90 pointer-events-none" />
 
-          {/* LEFT SIDE */}
-          <div className="flex flex-col items-start text-left gap-6 font-body">
+      {/* PARTICLES */}
+      <div className="absolute inset-0 z-20 pointer-events-none">
+        {Array.from({ length: 15 }).map((_, i) => (
+          <div
+            key={i}
+            className="neon-particle absolute rounded-full blur-2xl bg-[#1E9CD7]/30"
+            style={{
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              width: `${20 + Math.random() * 40}px`,
+              height: `${20 + Math.random() * 40}px`,
+            }}
+          />
+        ))}
+      </div>
 
-            {/* Working Hours */}
-            <div className="flex flex-wrap items-center gap-4 md:gap-6 bg-white/10 backdrop-blur-md border border-white/10 px-5 py-4 rounded-2xl w-fit font-alt">
+      {/* MAIN CONTENT */}
+      <div className="relative z-30 max-w-[1000px] mx-auto text-center flex flex-col items-center gap-8">
 
-              {/* Block 1 */}
-              <div className="flex flex-col">
-                <p className="text-[11px] uppercase tracking-[0.12em] text-white/80 font-medium">Working Hours</p>
-                <p className="font-semibold text-blue-300 text-sm tracking-tight">Mon – Fri, 10AM – 7PM</p>
-              </div>
-
-              <div className="hidden md:block w-px h-8 bg-white/10" />
-
-              {/* Block 2 */}
-              <div className="flex flex-col">
-                <p className="text-[11px] uppercase tracking-[0.12em] text-white/80 font-medium">Mail</p>
-                <a
-                  href="mailto:contact@freewilltech.in"
-                  className="font-semibold text-blue-300 text-sm tracking-tight hover:text-blue-200 transition"
-                >
-                  contact@freewilltech.in
-                </a>
-              </div>
-
-              <div className="hidden md:block w-px h-8 bg-white/10" />
-
-              {/* Block 3 */}
-              <div className="flex flex-col">
-                <p className="text-[11px] uppercase tracking-[0.12em] text-white/80 font-medium">Contact No</p>
-                <a
-                  href="tel:+919626806328"
-                  className="font-semibold text-blue-300 text-sm tracking-tight hover:text-blue-200 transition"
-                >
-                  +91 96268 06328
-                </a>
-              </div>
-
-            </div>
-
-            {/* Animated gradient headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="gradient-text font-heading font-extrabold text-4xl md:text-5xl lg:text-[56px] leading-[1.15] tracking-tight"
-              style={gradientAnimation}
-            >
-              Welcome to Free Will Technologies
-            </motion.h1>
-
-            {/* Description */}
-            <SplitText
-              text="We build intelligent digital solutions designed for modern businesses. Our focus is on creating high-performance products that solve real challenges and deliver measurable results. With strategic technical support, modern engineering practices, and efficient automation, we help organizations accelerate growth and unlock new possibilities. By embracing innovation and continuous learning, we ensure every business stays future-ready and competitive in an ever-evolving digital landscape."
-              className="font-body text-slate-900 text-[17px] md:text-[19px] max-w-[620px] leading-[1.7] text-left"
-              splitType="words"
-              stagger={0.05}
-              duration={0.35}
-              delay={0.12}
-            />
-
-            {/* CTA */}
-            <div className="mt-6 relative w-fit">
-              <NeonParticles />
-
-              <a
-                href="/contact"
-                className="cta-glow relative inline-flex items-center gap-3 px-7 py-3 
-                bg-gradient-to-r from-sky-500 to-indigo-500 text-white font-alt font-medium 
-                tracking-wide text-[15px] rounded-xl 
-                shadow-xl hover:-translate-y-0.5 active:scale-95 transition"
-              >
-                Contact Us <ArrowRight size={16} />
-              </a>
-            </div>
-
-            <a
-              href="/service"
-              className="inline-flex items-center text-sky-300 font-alt gap-2 px-4 py-2 border 
-              border-slate-300 rounded-xl tracking-wide"
-            >
-              Our Services
-            </a>
-
-          </div>
-
-          {/* RIGHT SIDE IMAGE */}
-          <motion.div
-            className="relative p-3 md:p-4 rounded-3xl bg-white/30 border border-slate-400 
-            backdrop-blur-md shadow-[0_18px_60px_rgba(0,0,0,0.12)] w-full max-w-[520px] mx-auto"
+        {/* Status pill */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="flex items-center gap-3 text-xs font-bold tracking-widest uppercase text-slate-600 bg-white/80 backdrop-blur-sm border border-slate-200 px-4 py-2 rounded-full shadow"
+        >
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+          </span>
+          <span>Mon – Fri, 10AM – 7PM</span>
+          <span className="text-slate-400">|</span>
+          <a
+            href="mailto:contact@freewilltech.in"
+            className="hover:text-[#1E9CD7] transition-colors"
           >
-            <img
-              src="/home.jpg"
-              alt="team collaborating"
-              className="rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] w-full h-[320px] object-cover"
-            />
-          </motion.div>
+            contact@freewilltech.in
+          </a>
+        </motion.div>
 
-        </div>
+        {/* Title */}
+<motion.h1
+  variants={fadeUp}
+  initial="hidden"
+  animate="show"
+  className="text-4xl sm:text-5xl lg:text-8=6xl xl:text-[5.5rem] font-extrabold tracking-tighter text-slate-900 leading-[1.05]"
+>
+  We empower growth <br />
+  <span className="gradient-text bg-gradient-to-r from-[#1E9CD7] via-[#FE861B] to-[#1E9CD7] bg-clip-text text-transparent bg-[length:200%_auto]">
+    through innovation.
+  </span>
+</motion.h1>
+
+{/* Subheading */}
+<motion.p
+  variants={fadeUp}
+  initial="hidden"
+  animate="show"
+  transition={{ delay: 0.2 }}
+  className="text-lg sm:text-2xl text-slate-600 font-light max-w-2xl"
+>
+  Tech-driven solutions built to inspire, automate, and accelerate modern businesses.
+</motion.p>
+
+{/* Description */}
+<motion.div
+  variants={fadeUp}
+  initial="hidden"
+  animate="show"
+  transition={{ delay: 0.35 }}
+  className="max-w-2xl"
+>
+  <SplitText
+    text="At Free Will Technologies, we create smart, scalable, design-driven digital solutions. From powerful web & app development to automation, branding, and IT consulting — we help businesses innovate, evolve, and succeed in the digital age."
+    className="text-lg md:text-xl text-slate-600 leading-relaxed font-light"
+    splitType="words"
+    stagger={0.01}
+    duration={0.4}
+    delay={0.4}
+  />
+</motion.div>
+
+        {/* CTA Buttons */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          animate="show"
+          transition={{ delay: 0.4 }}
+          className="flex flex-wrap justify-center gap-5 mt-4"
+        >
+          <a
+            href="/contact"
+            className="group relative px-8 py-4 bg-[#1E9CD7] text-white rounded-full overflow-hidden shadow-lg hover:shadow-blue-500/40 transition-all duration-300"
+          >
+            <div className="absolute inset-0 bg-[#FE861B] translate-y-full group-hover:translate-y-0 transition duration-300 ease-in-out" />
+            <span className="relative flex items-center gap-2 font-medium text-lg">
+              Start a Project <ArrowRight size={20} />
+            </span>
+          </a>
+
+          <a
+            href="/service"
+            className="px-8 py-4 bg-white border border-slate-200 text-slate-700 rounded-full font-medium text-lg hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center gap-2 shadow-sm hover:shadow-md"
+          >
+            Explore Services <ArrowDownRight size={20} />
+          </a>
+        </motion.div>
       </div>
     </header>
   );

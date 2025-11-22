@@ -1,23 +1,22 @@
-import React from 'react'
-import Layout from '../layouts/Layout'
-import AboutHeader from '../components/AboutHeader'
-import ContactWhatsApp from '../components/ContactWhatsApp'
-import ServiceHeroSection from '../components/ServiceHeroSection'
-import Faq from '../components/Faq'
-import CSRSection from '../components/csr'
+import React from 'react';
+import Layout from '../layouts/Layout';
+import ServiceHeroSection from '../components/ServiceHeroSection';
+import Mission from '../components/Mission';
 
 const About = () => {
   return (
-    <div>
-      <Layout>
-        <div>
-          <ServiceHeroSection></ServiceHeroSection>
-          <Faq></Faq>
-          <ContactWhatsApp></ContactWhatsApp>
-        </div>
-      </Layout>
-    </div>
-  )
-}
+    <Layout>
+      <main className="w-full bg-slate-50 overflow-hidden selection:bg-[#FE861B] selection:text-white">
+        
+        {/* 1. Intro Hero ("Who We Are" - About) */}
+        <ServiceHeroSection />
 
-export default About
+        {/* 2. Comprehensive Section ("Mission, Vision, Values, Principles") */}
+        <Mission/>
+
+      </main>
+    </Layout>
+  );
+};
+
+export default About;
