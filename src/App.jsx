@@ -5,9 +5,11 @@ import AnimatedRoutes from "./components/AnimatedRoutes";
 
 function App() {
   return (
-    <Router>
-      <AnimatedRoutes transitionDuration={1100} />
-    </Router>
+    <div className="relative min-h-screen">  {/* FINAL FIX */}
+      <Router>
+        <AnimatedRoutes />
+      </Router>
+    </div>
   );
 }
 

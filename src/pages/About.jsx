@@ -2,6 +2,7 @@ import React from 'react';
 import Layout from '../layouts/Layout';
 import ServiceHeroSection from '../components/ServiceHeroSection';
 import Mission from '../components/Mission';
+import GetInTouch from '../components/GetInTouch';
 
 const About = () => {
   return (
@@ -13,7 +14,7 @@ const About = () => {
 
         {/* 2. Comprehensive Section ("Mission, Vision, Values, Principles") */}
         <Mission/>
-
+        <GetInTouch/>
       </main>
     </Layout>
   );

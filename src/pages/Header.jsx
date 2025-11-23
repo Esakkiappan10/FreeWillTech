@@ -83,27 +83,6 @@ export default function Header() {
       {/* MAIN CONTENT */}
       <div className="relative z-30 max-w-[1000px] mx-auto text-center flex flex-col items-center gap-8">
 
-        {/* Status pill */}
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="flex items-center gap-3 text-xs font-bold tracking-widest uppercase text-slate-600 bg-white/80 backdrop-blur-sm border border-slate-200 px-4 py-2 rounded-full shadow"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-          </span>
-          <span>Mon – Fri, 10AM – 7PM</span>
-          <span className="text-slate-400">|</span>
-          <a
-            href="mailto:contact@freewilltech.in"
-            className="hover:text-[#1E9CD7] transition-colors"
-          >
-            contact@freewilltech.in
-          </a>
-        </motion.div>
-
         {/* Title */}
 <motion.h1
   variants={fadeUp}

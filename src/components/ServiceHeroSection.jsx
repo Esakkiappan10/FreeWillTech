@@ -122,12 +122,6 @@ export default function ServiceHeroSection() {
                 alt="Our Team"
                 className="w-full h-full object-cover scale-110 hover:scale-100 transition-transform duration-[1.4s]"
               />
-
-              {/* Bottom Glass Bar */}
-              <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-white/90 via-white/70 to-transparent text-slate-800 backdrop-blur-md">
-                <p className="font-bold text-2xl">Since 2020</p>
-                <p className="text-slate-500 text-sm">Transforming businesses with technology.</p>
-              </div>
             </motion.div>
           </motion.div>
 

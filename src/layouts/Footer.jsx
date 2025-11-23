@@ -150,7 +150,7 @@ export default function Footer() {
         </div>
 
         {/* --- BOTTOM ROW --- */}
-        <div className="flex flex-col md:flex-row justify-center items-center gap-4 text-[10px] md:text-xs text-slate-600 border-t border-slate-800/50 pt-6">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-4 text-[10px] md:text-xs text-orange-500 border-t border-slate-800/50 pt-3">
           <p>© {currentYear} Free Will Technologies. All rights reserved.</p>
         </div>
 
