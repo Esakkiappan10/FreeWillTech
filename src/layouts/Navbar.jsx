@@ -15,8 +15,10 @@ const navLinks = [
   { name: "About", path: "/about" },
   { name: "Services", path: "/service" },
   { name: "Products", path: "/products" },
-  { name: "Careers", path: "/careers" }, // Added for completeness based on footer
+  { name: "CSR", path: "/csr" }, 
   { name: "Contact", path: "/contact" },
+  { name: "Testimonials", path: "/testimonials" },
+  { name: "ResumeBuilder", path: "/resume" },
 ];
 
 const socialLinks = [

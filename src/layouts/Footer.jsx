@@ -25,9 +25,11 @@ const servicesDesign = [
 
 const companyLinks = [
   { name: "About Us", href: "/about" },
-  { name: "Our Process", href: "/process" },
-  { name: "Careers", href: "/careers" },
   { name: "Contact", href: "/contact" },
+  { name: "Services", href: "/services" },
+  { name: "Products", href: "/products" },
+  { name: "CSR Initiatives", href: "/csr" },
+  { name: "Testimonials", href: "/testimonials" } 
 ];
 
 const socialLinks = [

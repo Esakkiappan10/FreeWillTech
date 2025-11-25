@@ -197,32 +197,21 @@ export default function AboutCompany() {
               </div>
 
               {/* Bottom: Call to Action */}
-              <div className="pt-4 mt-auto border-t border-slate-50">
-                <div className="flex items-center gap-2 text-sm font-bold text-slate-900 group-hover:text-[#FE861B] transition-colors cursor-pointer">
-                    <span>Learn more</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-                </div>
-              </div>
+<div className="pt-4 mt-auto border-t border-slate-50">
+  <a
+    href="/service"
+    className="flex items-center gap-2 text-sm font-bold text-slate-900 group-hover:text-[#FE861B] transition-colors cursor-pointer"
+  >
+    <span>Learn more</span>
+    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+  </a>
+</div>
               
               {/* Active Border Gradient (Invisible until hover) */}
               <div className="absolute inset-0 rounded-2xl md:rounded-[2rem] border-2 border-transparent group-hover:border-[#1E9CD7]/10 pointer-events-none transition-colors duration-500" />
 
             </motion.div>
           ))}
-        </motion.div>
-
-        {/* Bottom CTA */}
-        <motion.div 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="mt-20 text-center"
-        >
-            <a 
-                href="/contact"
-                className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#FE861B] text-white font-bold rounded-full shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:-translate-y-1 transition-all duration-300"
-            >
-                Get a Custom Quote <ArrowRight className="w-5 h-5" />
-            </a>
         </motion.div>
 
       </div>

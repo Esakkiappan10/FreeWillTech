@@ -1,118 +1,133 @@
-import React, { useEffect } from "react";
-import { FaPhoneAlt, FaLinkedinIn, FaInstagram } from "react-icons/fa";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import React from "react";
+import { motion } from "framer-motion";
+import { 
+  Phone, Mail, MapPin, Globe, 
+  ArrowUpRight, Building2, Smartphone, Linkedin, Instagram 
+} from "lucide-react";
 
-const ContactCards = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 900,
-      once: true,
-      easing: "ease-in-out",
-    });
-  }, []);
+// --- ANIMATION VARIANTS ---
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
 
-  const contacts = [
-    {
-      title: "Phone",
-      icon: <FaPhoneAlt size={26} />,
-      description: "+91 96268 06328",
-      href: "tel:+919626806328",
-      bgImage:
-        "https://ik.imagekit.io/HoneyJoe/freewill%20technologies%20assetss/5118756.jpg?updatedAt=1744995811309",
-    },
-    {
-      title: "LinkedIn",
-      icon: <FaLinkedinIn size={26} />,
-      description: "#free-will-technologies",
-      href: "https://www.linkedin.com/company/free-will-technologies/",
-      bgImage:
-        "https://ik.imagekit.io/HoneyJoe/freewill%20technologies%20assetss/10464412.png?updatedAt=1744995811295",
-    },
-    {
-      title: "Instagram",
-      icon: <FaInstagram size={26} />,
-      description: "@freewill_tech",
-      href: "https://www.instagram.com/freewill_tech",
-      bgImage:
-        "https://ik.imagekit.io/HoneyJoe/freewill%20technologies%20assetss/2227.jpg?updatedAt=1744995811112",
-    },
-  ];
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+};
 
+// --- DATA: FREE WILL TECHNOLOGIES ---
+const directContact = [
+  {
+    title: "Phone",
+    value: "+91 96268 06328",
+    sub: "Mon-Fri 9am-6pm",
+    icon: Smartphone,
+    action: "Call Now",
+    href: "tel:+919626806328",
+    color: "blue"
+  },
+  {
+    title: "Email",
+    value: "contact@freewilltech.in",
+    sub: "Online Support 24/7",
+    icon: Mail,
+    action: "Send Email",
+    href: "mailto:contact@freewilltech.in",
+    color: "orange"
+  }
+];
+
+export default function ContactCards() {
   return (
-    <section className="w-[95%] lg:w-[80%] mx-auto py-12 lg:py-20 font-[Nunito]">
-      <div className="text-center mb-12" data-aos="fade-down">
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-primary-dark mb-3 drop-shadow-sm">
-          Contact Us
-        </h2>
-        <p className="text-gray-600 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-          Connect with us on the platform you prefer — our team is always ready to assist.
-        </p>
-        <div className="mx-auto mt-4 h-1 w-20 bg-secondary rounded-full shadow-md"></div>
-      </div>
+    <section className="relative w-full py-24 bg-white font-sans overflow-hidden">
+      
+      {/* --- BACKGROUND FX --- */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-100/50 blur-[120px] rounded-full opacity-60 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-orange-100/50 blur-[120px] rounded-full opacity-60 pointer-events-none" />
 
-      <div
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-        data-aos="fade-up"
-      >
-        {contacts.map((contact, index) => (
-          <a
-            key={index}
-            href={contact.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative rounded-3xl overflow-hidden shadow-lg 
-                       hover:shadow-[0_20px_40px_rgba(0,0,0,0.25)] 
-                       transform hover:-translate-y-2 transition-all duration-700 bg-black/90"
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+        
+        {/* --- HEADER --- */}
+        <div className="text-center mb-20">
+          <motion.div 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-50 border border-slate-200 text-slate-600 text-xs font-bold uppercase tracking-widest mb-4"
           >
-            {/* Background Image */}
-            <div
-              className="absolute inset-0 bg-cover bg-center scale-105 
-                         group-hover:scale-110 transition-transform 
-                         duration-&lsqb;1100ms&rsqb; 
-                         ease-&lsqb;cubic-bezier(0.22,1,0.36,1)&rsqb;"
-              style={{ backgroundImage: `url(${contact.bgImage})` }}
-            ></div>
+            <div className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+            Here to Help
+          </motion.div>
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/55 to-black/70 
-                            group-hover:from-black/65 group-hover:via-black/60 group-hover:to-black/80 
-                            transition-all duration-700"></div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6"
+          >
+            Let’s Talk About Your <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-orange-500">
+              Next Big Move
+            </span>
+          </motion.h2>
 
-            {/* Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-                            w-40 h-40 bg-white/10 rounded-full blur-2xl opacity-40 
-                            group-hover:opacity-60 transition duration-700"></div>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-lg text-slate-500 max-w-2xl mx-auto"
+          >
+            Whether you need technical expertise, career guidance, or digital transformation, we are just a click away.
+          </motion.p>
+        </div>
 
-            {/* Content */}
-            <div className="relative z-10 flex flex-col justify-center items-center text-center text-white h-[250px] sm:h-[260px] px-6">
-              
-              <div className="relative flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-r from-secondary to-primary-dark 
-                                rounded-full opacity-60 blur-md 
-                                group-hover:blur-lg transition-all duration-500"></div>
+        {/* --- SECTION 1: INSTANT CONTACT (PHONE / EMAIL) --- */}
+        <motion.div 
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24 max-w-4xl mx-auto"
+        >
+          {directContact.map((contact, i) => (
+            <motion.a
+              key={i}
+              href={contact.href}
+              variants={item}
+              whileHover={{ y: -5 }}
+              className={`group relative flex items-center gap-6 p-8 bg-white rounded-[2rem] border border-slate-100 shadow-xl shadow-slate-200/50 overflow-hidden transition-all duration-300 hover:border-${contact.color}-200`}
+            >
+              {/* Hover Gradient */}
+              <div className={`absolute inset-0 bg-gradient-to-r from-${contact.color}-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
-                <div className="bg-white text-primary-dark p-4 rounded-full shadow-xl 
-                                group-hover:scale-110 transition-transform duration-300 relative z-10">
-                  {contact.icon}
-                </div>
+              {/* Icon */}
+              <div className={`relative z-10 w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 transition-colors duration-300 ${
+                contact.color === 'blue' ? 'bg-blue-50 text-blue-600 group-hover:bg-blue-600 group-hover:text-white' : 'bg-orange-50 text-orange-500 group-hover:bg-orange-500 group-hover:text-white'
+              }`}>
+                <contact.icon size={32} strokeWidth={1.5} />
               </div>
 
-              <h3 className="mt-5 text-xl font-bold tracking-wide drop-shadow-sm">
-                {contact.title}
-              </h3>
+              {/* Text */}
+              <div className="relative z-10">
+                <p className="text-slate-400 text-sm font-bold uppercase tracking-wider mb-1">{contact.title}</p>
+                <h3 className="text-xl md:text-2xl font-bold text-slate-900 group-hover:text-blue-900 transition-colors break-all md:break-normal">
+                  {contact.value}
+                </h3>
+                <div className="flex items-center gap-2 mt-2 text-sm font-medium text-slate-500 group-hover:text-slate-700">
+                  {contact.action} <ArrowUpRight size={16} />
+                </div>
+              </div>
+            </motion.a>
+          ))}
+        </motion.div>
 
-              <p className="mt-2 text-sm sm:text-base text-gray-200 
-                            group-hover:text-white opacity-90 tracking-wide 
-                            transition-all duration-300">
-                {contact.description}
-              </p>
-            </div>
-          </a>
-        ))}
       </div>
     </section>
   );
-};
-
-export default ContactCards;
+}

@@ -1,56 +1,215 @@
-import React, { useEffect } from "react";
-import AOS from "aos";
-import "aos/dist/aos.css";
+import React from "react";
+import { motion } from "framer-motion";
+import { 
+  Phone, MapPin, Linkedin, Instagram, 
+  Home, ChevronRight, ArrowUpRight, Globe 
+} from "lucide-react";
 
+// --- COMPONENT 1: HERO HEADER ---
 const ContactHeader = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000,
-      once: true,
-      easing: "ease-in-out",
-    });
-  }, []);
-
   return (
-    <header
-      className="relative w-full font-[Nunito] overflow-hidden"
-      data-aos="fade-up"
-    >
-     {/* Background Image */}
-<div className="relative w-full h-[280px] sm:h-[350px] md:h-[420px] lg:h-[500px] overflow-hidden">
-
-  <img
-    src="https://th.bing.com/th/id/OIP.yzmdeL4yM8wzTm-EBOtwZQHaEL?w=286&h=180&c=7&r=0&o=7&dpr=1.3&pid=1.7&rm=3"
-    alt="Service Illustration"
-    className="w-full h-full object-cover"
-  />
+    <header className="relative w-full h-[400px] lg:h-[450px] overflow-hidden font-sans flex items-center justify-center">
       
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black/60"></div>
+      {/* Background with Parallax Feel */}
+      <motion.div
+        initial={{ scale: 1.1 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 1.5, ease: "easeOut" }}
+        className="absolute inset-0 z-0"
+      >
+        <img
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop"
+          alt="Office Connectivity"
+          className="w-full h-full object-cover"
+        />
+        {/* Professional Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 via-slate-900/80 to-blue-900/60" />
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
+      </motion.div>
 
-        {/* Text Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-5">
-          <h1
-            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-wide drop-shadow-lg"
-            data-aos="fade-down"
-          >
-            Contact Us
+      {/* Content */}
+      <div className="relative z-10 text-center px-6">
+        <motion.div 
+           initial={{ opacity: 0, y: 20 }}
+           animate={{ opacity: 1, y: 0 }}
+           transition={{ duration: 0.8 }}
+        >
+          <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-orange-400 text-xs font-bold tracking-widest uppercase mb-4 backdrop-blur-md">
+            24/7 Support
+          </span>
+          <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-6 tracking-tight drop-shadow-xl">
+            Let’s <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-orange-400">Connect</span>
           </h1>
+        </motion.div>
 
-          <p
-            className="mt-3 text-sm sm:text-base md:text-lg text-gray-200"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
-            <span className="text-primary font-semibold hover:underline cursor-pointer transition-all duration-300">
-              Home
-            </span>{" "}
-            <span className="mx-2">/</span> Contact
-          </p>
-        </div>
+        {/* Glass Breadcrumb */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-lg shadow-2xl"
+        >
+          <a href="/" className="flex items-center gap-2 text-sm font-semibold text-slate-300 hover:text-white transition-colors">
+            <Home size={16} /> Home
+          </a>
+          <ChevronRight size={14} className="text-slate-500" />
+          <span className="text-sm font-bold text-white">Contact Us</span>
+        </motion.div>
       </div>
     </header>
   );
 };
 
-export default ContactHeader;
+// --- COMPONENT 2: INFO CARDS (Bento Grid) ---
+const ContactInfo = () => {
+  const container = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.1 } }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  };
+
+  return (
+    <section className="relative w-full py-20 bg-slate-50 -mt-20 z-20 rounded-t-[3rem]">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        
+        <motion.div 
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
+
+          {/* --- 1. HEADQUARTERS CARD (Wide) --- */}
+          <motion.div 
+            variants={item}
+            className="md:col-span-3 group relative p-8 md:p-10 bg-white rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-500 overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 opacity-50 group-hover:opacity-100 transition-opacity" />
+            
+            <div className="flex flex-col md:flex-row items-start md:items-center gap-8 relative z-10">
+              <div className="w-20 h-20 rounded-3xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform duration-500">
+                <MapPin size={36} />
+              </div>
+              
+              <div className="flex-1">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[11px] font-bold uppercase tracking-widest border border-blue-100">
+                    Campus HQ
+                  </span>
+                  <span className="text-slate-400 text-sm font-semibold flex items-center gap-1">
+                    <Globe size={14} /> Tamil Nadu, India
+                  </span>
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
+                  Joseph StartUp Center
+                </h3>
+                <p className="text-lg text-slate-500 leading-relaxed max-w-2xl">
+                  St. Joseph’s College (Autonomous),<br />
+                  Tiruchirappalli, Tamil Nadu.
+                </p>
+              </div>
+
+              <a 
+                href="https://maps.google.com/?q=St. Joseph’s College Tiruchirappalli" 
+                target="_blank" 
+                rel="noreferrer"
+                className="px-8 py-4 bg-white border border-slate-200 rounded-2xl font-bold text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center gap-2 group/btn"
+              >
+                View on Map <ArrowUpRight size={18} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+              </a>
+            </div>
+          </motion.div>
+
+          {/* --- 2. PHONE CARD --- */}
+          <motion.a 
+            href="tel:+919626806328"
+            variants={item}
+            whileHover={{ y: -8 }}
+            className="group relative p-8 bg-white rounded-[2rem] border border-slate-100 shadow-lg hover:border-orange-200 transition-all duration-300"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="relative z-10">
+              <div className="w-14 h-14 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center mb-6 group-hover:bg-orange-600 group-hover:text-white transition-colors duration-300">
+                <Phone size={28} />
+              </div>
+              <h4 className="text-lg font-bold text-slate-900 mb-1">Direct Line</h4>
+              <p className="text-2xl font-bold text-slate-700 group-hover:text-orange-600 transition-colors">
+                +91 96268 06328
+              </p>
+              <p className="text-sm text-slate-400 mt-2 font-medium">
+                Mon-Fri • 9am to 6pm
+              </p>
+            </div>
+          </motion.a>
+
+          {/* --- 3. LINKEDIN CARD --- */}
+          <motion.a 
+            href="https://www.linkedin.com/company/free-will-technologies/"
+            target="_blank"
+            rel="noreferrer"
+            variants={item}
+            whileHover={{ y: -8 }}
+            className="group relative p-8 bg-white rounded-[2rem] border border-slate-100 shadow-lg hover:border-blue-200 transition-all duration-300"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="relative z-10">
+              <div className="w-14 h-14 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center mb-6 group-hover:bg-[#0077b5] group-hover:text-white transition-colors duration-300">
+                <Linkedin size={28} />
+              </div>
+              <h4 className="text-lg font-bold text-slate-900 mb-1">Professional Network</h4>
+              <p className="text-xl font-bold text-slate-700 group-hover:text-[#0077b5] transition-colors truncate">
+                Free Will Technologies
+              </p>
+              <p className="text-sm text-slate-400 mt-2 font-medium flex items-center gap-1">
+                Connect for Collaborations <ArrowUpRight size={14} />
+              </p>
+            </div>
+          </motion.a>
+
+          {/* --- 4. INSTAGRAM CARD --- */}
+          <motion.a 
+            href="https://www.instagram.com/freewill_tech"
+            target="_blank"
+            rel="noreferrer"
+            variants={item}
+            whileHover={{ y: -8 }}
+            className="group relative p-8 bg-white rounded-[2rem] border border-slate-100 shadow-lg hover:border-pink-200 transition-all duration-300"
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-pink-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            
+            <div className="relative z-10">
+              <div className="w-14 h-14 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center mb-6 group-hover:bg-gradient-to-tr group-hover:from-yellow-500 group-hover:via-red-500 group-hover:to-purple-600 group-hover:text-white transition-all duration-300">
+                <Instagram size={28} />
+              </div>
+              <h4 className="text-lg font-bold text-slate-900 mb-1">Life at Free Will</h4>
+              <p className="text-xl font-bold text-slate-700 group-hover:text-pink-600 transition-colors">
+                @freewill_tech
+              </p>
+              <p className="text-sm text-slate-400 mt-2 font-medium flex items-center gap-1">
+                Follow our Journey <ArrowUpRight size={14} />
+              </p>
+            </div>
+          </motion.a>
+
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+// --- MAIN EXPORT ---
+export default function ContactPage() {
+  return (
+    <div className="bg-white min-h-screen">
+      <ContactHeader />
+      <ContactInfo />
+    </div>
+  );
+}

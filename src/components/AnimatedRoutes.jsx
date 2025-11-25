@@ -20,6 +20,14 @@ const PagePlaceholder = ({ title, color }) => (
   </div>
 );
 
+const ResumeRedirect = () => {
+  useEffect(() => {
+    window.location.href = "https://resumebuilder.freewilltech.in/";
+  }, []);
+  return null;
+};
+
+
 const RedirectExternal = ({ url }) => {
   useEffect(() => {
     window.location.href = url;
@@ -101,10 +109,7 @@ function AnimatedRoutesContent({ transitionDuration = 1200 }) {
             <Route path="/testimonials" element={<TestimonialPage />} />
             <Route path="/csr" element={<CSRSection />} />
             <Route path="/products" element={<AboutProductsClients />} />
-            <Route 
-              path="/resume"
-              element={<RedirectExternal url="https://resumebuilder.freewilltech.in/" />}
-            />
+            <Route path="/resume" element={<ResumeRedirect />} />
           </Routes>
         </motion.div>
       </AnimatePresence>
