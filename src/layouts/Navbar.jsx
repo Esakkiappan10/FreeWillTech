@@ -96,13 +96,15 @@ export default function Header() {
       </motion.div>
 
       {/* --- MAIN NAVIGATION (Sticky) --- */}
-      <header 
-        className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-          isScrolled 
-            ? "bg-white/80 backdrop-blur-xl border-b border-slate-200/60 shadow-sm h-20" 
-            : "bg-white/60 backdrop-blur-md h-24"
-        }`}
-      >
+      <header
+  className={`top-0 z-50 w-full transition-all duration-300
+    lg:sticky lg:top-0
+    fixed
+    ${isScrolled
+      ? "bg-white/80 backdrop-blur-xl border-b border-slate-200/60 shadow-sm h-20"
+      : "bg-white/60 backdrop-blur-md h-24"
+    }`}
+>
         <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8 h-full flex items-center justify-between">
           
           {/* Logo */}
