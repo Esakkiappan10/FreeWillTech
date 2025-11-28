@@ -71,7 +71,14 @@ const TiltCard = () => {
     transformStyle: "preserve-3d",
     perspective: "1000px"    // FIX
   }}
-  className="relative z-10 w-full max-w-[500px] aspect-[4/5] mx-auto" 
+  className="
+  relative z-10 
+  w-[85%] mx-auto 
+  aspect-[3/4]          /* Mobile-friendly ratio */
+  sm:w-[80%]            
+  md:w-[90%]            
+  lg:w-full lg:max-w-[500px] lg:aspect-[4/5] 
+"
 >
 
       {/* Main Glass Panel */}

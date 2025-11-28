@@ -229,8 +229,8 @@ export default function AboutProductsClients() {
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-center lg:text-left order-2 lg:order-1"
-            >
+              className="text-center lg:text-left order-1 lg:order-1">
+
               <SectionTag color="orange">Free Will Technologies</SectionTag>
               
               <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.1]">
@@ -259,7 +259,7 @@ modern tools, strategic thinking, and a commitment to excellence
             </motion.div>
 
             {/* Right Column: Visual Composition */}
-            <div className="order-1 lg:order-2">
+            <div className="order-2 lg:order-2">
                <HeroGraphic />
             </div>
 

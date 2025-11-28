@@ -85,76 +85,129 @@ const ContactInfo = () => {
 >
 
   {/* =================== HQ CARD =================== */}
-  <motion.div 
-    variants={item}
-    className="md:col-span-3 group relative p-8 md:p-10 bg-white rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-500 overflow-hidden"
-  >
-    <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 opacity-50 group-hover:opacity-100 transition-opacity" />
+{/* =================== HQ CARD =================== */}
+<motion.div 
+  variants={item}
+  className="
+    md:col-span-3 group relative 
+    p-6 md:p-10 
+    bg-white rounded-[2.5rem] 
+    border border-slate-100 shadow-xl shadow-slate-200/50 
+    hover:shadow-2xl hover:shadow-blue-900/5 
+    transition-all duration-500 overflow-hidden
+  "
+>
+  <div className="absolute top-0 right-0 w-48 h-48 md:w-64 md:h-64 bg-blue-50 rounded-full blur-[70px] -translate-y-1/2 translate-x-1/2 opacity-50 group-hover:opacity-100 transition-opacity" />
+  
+  <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 relative z-10">
     
-    <div className="flex flex-col md:flex-row items-start md:items-center gap-8 relative z-10">
-      <div className="w-20 h-20 rounded-3xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform duration-500">
-        <MapPin size={36} />
-      </div>
-      
-      <div className="flex-1">
-        <div className="flex items-center gap-3 mb-2">
-          <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[11px] font-bold uppercase tracking-widest border border-blue-100">
-            Campus HQ
-          </span>
-          <span className="text-slate-400 text-sm font-semibold flex items-center gap-1">
-            <Globe size={14} /> Tamil Nadu, India
-          </span>
-        </div>
-        <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
-          Joseph StartUp Center
-        </h3>
-        <p className="text-lg text-slate-500 leading-relaxed max-w-2xl">
-          St. Joseph’s College (Autonomous),<br />
-          Tiruchirappalli, Tamil Nadu.
-        </p>
+    {/* Icon — auto-resizes on mobile */}
+    <div className="
+      w-16 h-16 md:w-20 md:h-20 
+      rounded-3xl bg-blue-600 text-white 
+      flex items-center justify-center shrink-0 
+      shadow-lg shadow-blue-600/30 
+      group-hover:scale-110 transition-transform duration-500
+    ">
+      <MapPin size={30} className="md:size-9" />
+    </div>
+
+    {/* Text section */}
+    <div className="flex-1">
+      {/* Tags */}
+      <div className="flex flex-wrap items-center gap-2 mb-2">
+        <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] md:text-[11px] font-bold uppercase tracking-widest border border-blue-100">
+          Campus HQ
+        </span>
+
+        <span className="text-slate-400 text-xs md:text-sm font-semibold flex items-center gap-1">
+          <Globe size={12} className="md:size-4" /> Tamil Nadu, India
+        </span>
       </div>
 
-      <a 
-        href="https://maps.google.com/?q=St. Joseph’s College Tiruchirappalli" 
-        target="_blank" 
-        rel="noreferrer"
-        className="px-8 py-4 bg-white border border-slate-200 rounded-2xl font-bold text-slate-700 hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center gap-2 group/btn"
-      >
-        View on Map <ArrowUpRight size={18} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
-      </a>
-    </div>
-  </motion.div>
+      <h3 className="text-xl md:text-3xl font-bold text-slate-900 leading-tight mb-1 md:mb-2">
+        Joseph StartUp Center
+      </h3>
 
-  {/* =================== REGISTERED ADDRESS =================== */}
-  <motion.div 
-    variants={item}
-    className="md:col-span-3 group relative p-8 md:p-10 bg-white rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-500 overflow-hidden"
-  >
-    <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50 rounded-full blur-[80px] -translate-y-1/2 translate-x-1/2 opacity-50 group-hover:opacity-100 transition-opacity" />
-    
-    <div className="flex flex-col md:flex-row items-start md:items-center gap-8 relative z-10">
-      <div className="w-20 h-20 rounded-3xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform duration-500">
-        <MapPin size={36} />
-      </div>
-      
-      <div className="flex-1">
-        <div className="flex items-center gap-3 mb-2">
-          <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[11px] font-bold uppercase tracking-widest border border-blue-100">
-            Registered Address
-          </span>
-          <span className="text-slate-400 text-sm font-semibold flex items-center gap-1">
-            <Globe size={14} /> Tamil Nadu, India - 627 117
-          </span>
-        </div>
-        <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
-          63 B/5, Vallioor
-        </h3>
-        <p className="text-lg text-slate-500 leading-relaxed max-w-2xl">
-          Tirunelveli Dt.
-        </p>
-      </div>
+      <p className="text-slate-500 text-sm md:text-lg leading-relaxed max-w-2xl">
+        St. Joseph’s College (Autonomous),<br />
+        Tiruchirappalli, Tamil Nadu.
+      </p>
     </div>
-  </motion.div>
+
+    {/* Map Button */}
+    <a 
+      href="https://maps.google.com/?q=St. Joseph’s College Tiruchirappalli" 
+      target="_blank" 
+      rel="noreferrer"
+      className="
+        px-6 py-3 md:px-8 md:py-4 
+        bg-white border border-slate-200 
+        rounded-2xl font-bold text-slate-700 
+        hover:bg-slate-50 hover:border-slate-300 
+        transition-all flex items-center gap-2 
+        w-full md:w-auto mt-1 md:mt-0
+      "
+    >
+      View on Map 
+      <ArrowUpRight size={16} className="md:size-[18] transition-transform group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1" />
+    </a>
+
+  </div>
+</motion.div>
+
+
+ {/* =================== REGISTERED ADDRESS =================== */}
+<motion.div 
+  variants={item}
+  className="
+    md:col-span-3 group relative 
+    p-6 md:p-10 
+    bg-white rounded-[2.5rem] 
+    border border-slate-100 shadow-xl shadow-slate-200/50 
+    hover:shadow-2xl hover:shadow-blue-900/5 
+    transition-all duration-500 overflow-hidden
+  "
+>
+  <div className="absolute top-0 right-0 w-48 h-48 md:w-64 md:h-64 bg-blue-50 rounded-full blur-[70px] -translate-y-1/2 translate-x-1/2 opacity-50 group-hover:opacity-100 transition-opacity" />
+  
+  <div className="flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 relative z-10">
+    
+    {/* Icon (auto-resizes on mobile) */}
+    <div className="
+      w-16 h-16 md:w-20 md:h-20 
+      rounded-3xl bg-blue-600 text-white 
+      flex items-center justify-center shrink-0 
+      shadow-lg shadow-blue-600/30 
+      group-hover:scale-110 transition-transform duration-500
+    ">
+      <MapPin size={30} className="md:size-9" />
+    </div>
+    
+    <div className="flex-1">
+      
+      {/* Tags */}
+      <div className="flex flex-wrap items-center gap-2 mb-2">
+        <span className="px-3 py-1 rounded-full bg-blue-50 text-blue-600 text-[10px] md:text-[11px] font-bold uppercase tracking-widest border border-blue-100">
+          Registered Address
+        </span>
+        <span className="text-slate-400 text-xs md:text-sm font-semibold flex items-center gap-1">
+          <Globe size={12} className="md:size-4" /> Tamil Nadu, India 
+        </span>
+      </div>
+
+      {/* Title */}
+      <h3 className="text-xl md:text-3xl font-bold text-slate-900 mb-1 md:mb-2 leading-tight">
+        63 B/5, Vallioor
+      </h3>
+
+      {/* Sub text */}
+      <p className="text-slate-500 text-sm md:text-lg leading-relaxed max-w-2xl">
+        Tirunelveli Dt - 627 117
+      </p>
+    </div>
+  </div>
+</motion.div>
 
   {/* =================== PHONE =================== */}
   <motion.a 

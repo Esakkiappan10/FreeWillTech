@@ -43,6 +43,18 @@ export default function Header() {
   // Close mobile menu on route change
   useEffect(() => setIsOpen(false), [location]);
 
+  useEffect(() => {
+  if (isOpen) {
+    document.body.style.overflow = "hidden";   // stop scroll
+  } else {
+    document.body.style.overflow = "auto";     // allow scroll again
+  }
+  return () => {
+    document.body.style.overflow = "auto";     // cleanup
+  };
+}, [isOpen]);
+
+
   return (
     <>
       {/* --- TOP BAR (Contact & Socials) --- */}
@@ -103,15 +115,22 @@ export default function Header() {
       </motion.div>
 
       {/* --- MAIN NAVIGATION (Sticky) --- */}
-      <header
-  className={`top-0 z-50 w-full transition-all duration-300
+<header
+  className={`
+    z-50 w-full transition-all duration-300
+
+    fixed top-0 left-0 right-0
+
+    /* DESKTOP → Sticky */
     lg:sticky lg:top-0
-    fixed
+
     ${isScrolled
-      ? "bg-white/80 backdrop-blur-xl border-b border-slate-200/60 shadow-sm h-20"
-      : "bg-white/60 backdrop-blur-md h-24"
-    }`}
+      ? "bg-white/80 backdrop-blur-xl border-b border-slate-200/60 shadow-sm h-16"
+      : "bg-white/60 backdrop-blur-md h-20"
+    }
+  `}
 >
+
         <div className="max-w-[1400px] mx-auto px-6 sm:px-6 lg:px-14 h-full flex items-center justify-between">
           
           {/* Logo */}
@@ -121,11 +140,10 @@ export default function Header() {
   alt="Free Will Technologies"
   className={`
     transition-all duration-300
-    ${isScrolled ? "h-13 lg:h-16" : "h-16 lg:h-24"}
-    w-auto lg:w-[230px]
+    ${isScrolled ? "h-10 lg:h-14" : "h-16 lg:h-24"}
+    w-auto
   `}
 />
-
           </Link>
 
           {/* Desktop Nav */}
@@ -176,83 +194,82 @@ export default function Header() {
       </header>
 
       {/* --- MOBILE MENU DRAWER --- */}
-      <AnimatePresence>
-        {isOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden"
-            />
-            
-            {/* Drawer */}
-            <motion.div 
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              className="fixed top-0 right-0 h-full w-[280px] bg-white z-50 shadow-2xl lg:hidden flex flex-col"
-            >
-              {/* Header */}
-              <div className="p-6 flex items-center justify-between border-b border-slate-100">
-                 <span className="font-bold text-slate-900">Menu</span>
-                 <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-slate-50 rounded-full">
-                    <X size={20} className="text-slate-500" />
-                 </button>
-              </div>
+    <AnimatePresence>
+  {isOpen && (
+    <>
+      {/* Backdrop */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={() => setIsOpen(false)}
+        className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden"
+      />
 
-              {/* Links */}
-              <div className="flex-1 overflow-y-auto p-6 py-8 max-h-[calc(100vh-180px)]">
-                 <ul className="flex flex-col gap-4">
-                    {navLinks.map((link, i) => (
-                       <motion.li 
-                         key={link.name}
-                         initial={{ opacity: 0, x: 20 }}
-                         animate={{ opacity: 1, x: 0 }}
-                         transition={{ delay: i * 0.05 }}
-                       >
-                          <Link 
-                            to={link.path} 
-                            className={`text-lg font-medium block py-2 ${
-                                location.pathname === link.path ? "text-[#1E9CD7]" : "text-slate-600"
-                            }`}
-                          >
-                             {link.name}
-                          </Link>
-                       </motion.li>
-                    ))}
-                 </ul>
-              </div>
+      {/* Drawer */}
+      <motion.div 
+        initial={{ x: "100%" }}
+        animate={{ x: 0 }}
+        exit={{ x: "100%" }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        className="fixed top-0 right-0 h-full w-[280px] bg-white z-50 shadow-2xl lg:hidden flex flex-col"
+      >
+        {/* Header */}
+        <div className="p-6 flex items-center justify-between border-b border-slate-100">
+          <span className="font-bold text-slate-900">Menu</span>
+          <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-slate-50 rounded-full">
+            <X size={20} className="text-slate-500" />
+          </button>
+        </div>
 
-              {/* Mobile Footer (Contact Info migrated here) */}
-              <div className="p-6 bg-slate-50 border-t border-slate-100 space-y-4">
-                 <div className="space-y-3 text-sm text-slate-600">
-                    <div className="flex items-center gap-3">
-                       <Mail size={16} className="text-[#FE861B]" />
-                       <span>contact@freewilltech.in</span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                       <Phone size={16} className="text-[#1E9CD7]" />
-                       <span>+91 96268 06328</span>
-                    </div>
-                 </div>
+        {/* Links */}
+        <div className="flex-1 overflow-y-auto p-6 py-8 max-h-[calc(100vh-310px)]">
+          <ul className="flex flex-col gap-4">
+            {navLinks.map((link, i) => (
+              <motion.li 
+                key={link.name}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.05 }}
+              >
+                <Link 
+                  to={link.path} 
+                  className={`text-lg font-medium block py-2 ${
+                      location.pathname === link.path ? "text-[#1E9CD7]" : "text-slate-600"
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              </motion.li>
+            ))}
+          </ul>
+        </div>
 
-                 <div className="flex gap-2 pt-2">
-                    {socialLinks.map((item, i) => (
-                        <a key={i} href={item.href} className="p-2 bg-white border border-slate-200 rounded-lg text-slate-600">
-                           <item.icon size={18} />
-                        </a>
-                    ))}
-                 </div>
-              </div>
+        {/* Mobile Footer */}
+        <div className="p-6 bg-slate-50 border-t border-slate-100 space-y-4">
+          <div className="space-y-3 text-sm text-slate-600">
+            <div className="flex items-center gap-3">
+              <Mail size={16} className="text-[#FE861B]" />
+              <span>contact@freewilltech.in</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <Phone size={16} className="text-[#1E9CD7]" />
+              <span>+91 96268 06328</span>
+            </div>
+          </div>
 
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+          <div className="flex gap-2 pt-2">
+            {socialLinks.map((item, i) => (
+              <a key={i} href={item.href} className="p-2 bg-white border border-slate-200 rounded-lg text-slate-600">
+                <item.icon size={18} />
+              </a>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </>
+  )}
+</AnimatePresence>
     </>
   );
 }

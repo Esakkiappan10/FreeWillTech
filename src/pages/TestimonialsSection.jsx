@@ -15,6 +15,7 @@ const testimonials = Array.from({ length: 15 }, (_, i) => ({
 // --- STATS DATA ---
 const stats = [
   { label: "Interns Trained", value: "15+", icon: Users, color: "blue" },
+  { label: "Skills Developed", value: "10+", icon: Users, color: "orange" },
 ];
 
 export default function TestimonialsSection() {
@@ -86,23 +87,41 @@ export default function TestimonialsSection() {
           </div>
 
           {/* Stats Row to fill whitespace */}
-          <div className="grid grid-cols-2 gap-4">
-            {stats.map((stat, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white/50 backdrop-blur-sm border border-grey py-9 px-8 rounded-2xl text-center shadow-sm"
-              >
-                <div className={`mx-auto w-10 h-10 rounded-full flex items-center justify-center mb-2 bg-${stat.color}-50 text-${stat.color}-600`}>
-                  <stat.icon size={20} />
-                </div>
-                <div className="text-2xl font-bold text-slate-900">{stat.value}</div>
-                <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">{stat.label}</div>
-              </motion.div>
-            ))}
-          </div>
+         <div className="grid grid-cols-2 gap-4">
+  {stats.map((stat, i) => (
+    <motion.div 
+      key={i}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: i * 0.1 }}
+      className="bg-white/60 backdrop-blur-sm border border-slate-200 py-6 px-4 rounded-2xl text-center shadow-sm"
+    >
+
+      {/* ICON — special Star icon only for 2nd item */}
+      <div 
+        className={`mx-auto w-10 h-10 rounded-full flex items-center justify-center mb-2 
+          bg-${stat.color}-50 text-${stat.color}-600`}
+      >
+        {i === 1 ? (
+          <Star size={20} className="text-yellow-500" />
+        ) : (
+          <stat.icon size={20} />
+        )}
+      </div>
+
+      {/* VALUE */}
+      <div className="text-xl md:text-2xl font-bold text-slate-900">
+        {stat.value}
+      </div>
+
+      {/* LABEL */}
+      <div className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+        {stat.label}
+      </div>
+
+    </motion.div>
+  ))}
+</div>
         </div>
 
         {/* --- 3D CAROUSEL --- */}
