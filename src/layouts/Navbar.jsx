@@ -4,12 +4,6 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { Menu, X, Linkedin, Instagram, Mail, Clock, Phone, ChevronRight } from "lucide-react";
 import logo from "../assets/fulllogo.png";
 
-/**
- * Premium Dual-Layer Header
- * - Top Bar: Contact & Socials (Dark Theme)
- * - Main Bar: Logo & Navigation (Glassmorphic Sticky)
- */
-
 const navLinks = [
   { name: "Home", path: "/" },
   { name: "About", path: "/about" },
@@ -57,22 +51,33 @@ export default function Header() {
         <div className="max-w-[1400px] mx-auto px-6 h-full flex justify-between items-center">
           
           {/* Left: Contact Details */}
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
-               <Clock size={12} className="text-[#FE861B]" />
-               <span>Mon – Fri, 10:00 AM – 7:00 PM</span>
-            </div>
-            <div className="w-[1px] h-3 bg-slate-700" />
-            <a href="mailto:contact@freewilltech.in" className="flex items-center gap-2 hover:text-white transition-colors">
-               <Mail size={12} className="text-[#1E9CD7]" />
-               <span>contact@freewilltech.in</span>
-            </a>
-            <div className="w-[1px] h-3 bg-slate-700" />
-            <a href="tel:+919626806328" className="flex items-center gap-2 hover:text-white transition-colors">
-               <Phone size={12} className="text-[#1E9CD7]" />
-               <span>+91 96268 06328</span>
-            </a>
-          </div>
+<div className="flex items-center gap-8 text-[15px] font-semibold">
+  <div className="flex items-center gap-3">
+    <Clock size={22} className="text-[#FE861B]" />
+    <span className="text-[13px] font-semibold">Mon – Fri, 10:00 AM – 7:00 PM</span>
+  </div>
+
+  <div className="w-[1px] h-4 bg-slate-700" />
+
+  <a
+    href="mailto:contact@freewilltech.in"
+    className="flex items-center gap-3 hover:text-white transition-colors"
+  >
+    <Mail size={22} className="text-[#1E9CD7]" />
+    <span className="text-[13px] font-semibold">contact@freewilltech.in</span>
+  </a>
+
+  <div className="w-[1px] h-4 bg-slate-700" />
+
+  <a
+    href="tel:+919626806328"
+    className="flex items-center gap-3 hover:text-white transition-colors"
+  >
+    <Phone size={22} className="text-[#1E9CD7]" />
+    <span className="text-[13px] font-semibold">+91 96268 06328</span>
+  </a>
+</div>
+
 
           {/* Right: Socials */}
           <div className="flex items-center gap-3">
@@ -86,7 +91,7 @@ export default function Header() {
                     rel="noreferrer"
                     className={`p-1 rounded bg-slate-800 text-white transition-colors ${item.color}`}
                   >
-                    <item.icon size={12} />
+                    <item.icon size={19} />
                   </a>
                 ))}
              </div>
@@ -112,7 +117,7 @@ export default function Header() {
             <img 
               src={logo} 
               alt="Free Will Technologies" 
-              className={`w-auto transition-all duration-300 ${isScrolled ? "h-10" : "h-12"}`} 
+              className={`px-12 w-27 transition-all duration-300 ${isScrolled ? "h-12" : "h-24"}`} 
             />
           </Link>
 

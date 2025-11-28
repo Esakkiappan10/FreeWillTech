@@ -20,16 +20,29 @@ export default function GetInTouch() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const { name, email, phone, service, message } = formData;
-    const mailto = `mailto:contact@freewilltech.in?subject=${encodeURIComponent(
-      "New Inquiry from " + name
-    )}&body=${encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService Required: ${service}\n\nMessage:\n${message}`
-    )}`;
-    window.location.href = mailto;
-  };
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  const { name, email, phone, service, message } = formData;
+
+  const subject = `New Inquiry from ${name}`;
+
+  // Use \r\n for universal mail app support
+  const body = 
+    `Name: ${name}\r\n` +
+    `Email: ${email}\r\n` +
+    `Phone: ${phone}\r\n` +
+    `Service Required: ${service}\r\n\r\n` +
+    `Message:\r\n${message}`;
+
+  const mailtoLink = `mailto:contact@freewilltech.in?subject=${encodeURIComponent(
+    subject
+  )}&body=${encodeURIComponent(body)}`;
+
+  // This opens the email client with all fields filled
+  window.location.href = mailtoLink;
+};
+
 
   return (
     <section ref={ref} className="relative py-24 lg:py-32 px-6 bg-white overflow-hidden">
