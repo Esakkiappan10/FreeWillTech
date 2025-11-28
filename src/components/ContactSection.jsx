@@ -22,6 +22,11 @@ export default function ContactSection() {
     }
   };
 
+  const handleSubmit = (e) => {
+  e.preventDefault();
+  window.location.href = "mailto:contact@freewilltech.in";
+};
+
   return (
     <section className="relative w-full py-24 bg-white font-sans overflow-hidden">
       
@@ -79,7 +84,7 @@ export default function ContactSection() {
              {/* Decor line */}
              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-orange-500" />
 
-            <form className="space-y-6 relative z-10">
+            <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <motion.div variants={itemVariants} className="space-y-2">
                   <label className="text-sm font-bold text-slate-700 ml-1">Full Name</label>

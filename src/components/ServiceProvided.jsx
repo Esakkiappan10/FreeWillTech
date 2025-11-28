@@ -478,7 +478,7 @@ const ExpandedCard = ({ service, onClose }) => {
                   href="/contact"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-2xl font-bold hover:bg-[#FE861B] transition-colors shadow-xl shadow-slate-900/10"
                 >
-                  Start Project <ArrowRight size={18} />
+                  Get In Touch <ArrowRight size={18} />
                 </a>
              </div>
            </motion.div>

@@ -152,7 +152,7 @@ export default function ServiceHeroSection() {
             {/* RIGHT IMAGE (Parallax + Zoom) */}
             <motion.div
               style={{ y: yImage, scale: scaleImage, opacity: opacityHero }}
-              className="relative h-[500px] lg:h-[700px] w-full hidden lg:block"
+              className="relative h-[500px] lg:h-[500px] w-full hidden lg:block"
             >
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-orange-500/10 rounded-[3rem] blur-3xl" />
               
@@ -163,7 +163,7 @@ export default function ServiceHeroSection() {
                 className="w-full h-full rounded-[3rem] overflow-hidden relative z-10 border border-white/50 shadow-2xl bg-white"
               >
                 <img
-                  src="/about.jpg"
+                  src="/abouts.png"
                   alt="Team Innovation"
                   className="w-full h-full object-cover object-center"
                 />
@@ -178,8 +178,8 @@ export default function ServiceHeroSection() {
                 transition={{ delay: 1, type: "spring", stiffness: 100 }}
                 className="absolute -bottom-8 -left-8 bg-white/90 backdrop-blur-xl p-6 rounded-3xl shadow-2xl border border-white/50 z-20 max-w-[200px]"
               >
-                <div className="text-4xl font-bold text-orange-500 mb-1">10+</div>
-                <div className="text-xs font-bold uppercase tracking-wider text-slate-400">Years of Excellence</div>
+                <div className="text-4xl font-bold text-orange-500 mb-1">99.9%</div>
+                <div className="text-xs font-bold uppercase tracking-wider text-slate-400">Client Satisfaction</div>
               </motion.div>
             </motion.div>
 

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { Menu, X, Linkedin, Instagram, Mail, Clock, Phone, ChevronRight } from "lucide-react";
+import { Menu, X, Linkedin, Instagram, Mail, Clock, Phone, ChevronRight, } from "lucide-react";
 import logo from "../assets/fulllogo.png";
+import { FaWhatsapp } from "react-icons/fa";
 
 const navLinks = [
   { name: "Home", path: "/" },
@@ -18,6 +19,7 @@ const navLinks = [
 const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/company/free-will-technologies/", color: "hover:bg-[#0077b5]" },
   { icon: Instagram, href: "https://www.instagram.com/freewill_tech/", color: "hover:bg-[#E1306C]" },
+  { icon: FaWhatsapp, href: "https://wa.me/916382503265", color: "hover:bg-[#25D366]" },
 ];
 
 export default function Header() {
@@ -91,7 +93,7 @@ export default function Header() {
                     rel="noreferrer"
                     className={`p-1 rounded bg-slate-800 text-white transition-colors ${item.color}`}
                   >
-                    <item.icon size={19} />
+                    <item.icon size={17} />
                   </a>
                 ))}
              </div>

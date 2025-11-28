@@ -3,43 +3,114 @@ import { motion, AnimatePresence } from "framer-motion";
 import { 
   Briefcase, Rocket, Wrench, ArrowRight, 
   CheckCircle2, PlayCircle, Users, Building2, 
-  Network, ChevronRight, Star 
+  Network, ChevronRight, Star, Zap, ShieldCheck, BarChart3 
 } from "lucide-react";
 import Header from "../layouts/Navbar"; 
 import Footer from "../layouts/Footer"; 
 
-// --- COMPONENTS ---
+// --- SUB-COMPONENTS ---
 
 const SectionTag = ({ children, color = "blue" }) => {
-  const colorClasses = color === "orange" 
-    ? "bg-orange-50 border-orange-100 text-orange-600" 
-    : "bg-blue-50 border-blue-100 text-blue-600";
-    
-  const dotClass = color === "orange" ? "bg-orange-500" : "bg-blue-600";
+  const colorStyles = {
+    blue: "bg-blue-50 border-blue-100 text-blue-600",
+    orange: "bg-orange-50 border-orange-100 text-orange-600",
+  };
+  const dotStyles = {
+    blue: "bg-blue-600",
+    orange: "bg-orange-500",
+  };
 
   return (
-    <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-bold uppercase tracking-widest mb-6 ${colorClasses}`}>
-      <div className={`w-2 h-2 rounded-full animate-pulse ${dotClass}`} />
+    <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-bold uppercase tracking-widest mb-6 ${colorStyles[color]}`}>
+      <span className={`relative flex h-2 w-2`}>
+        <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${dotStyles[color]}`}></span>
+        <span className={`relative inline-flex rounded-full h-2 w-2 ${dotStyles[color]}`}></span>
+      </span>
       {children}
     </div>
   );
 };
 
+// A pure CSS/Framer composition for the Hero right side (No external image dependency)
+const HeroGraphic = () => (
+  <div className="relative w-full h-[500px] md:h-[530px] flex items-center justify-center perspective-1000">
+
+    {/* Main Dashboard Card */}
+    <motion.div
+      initial={{ opacity: 0, scale: 0.96 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="relative z-20 w-[90%] md:w-[80%] h-[300px] bg-white rounded-3xl shadow-2xl shadow-blue-900/20 border border-slate-100 overflow-hidden flex flex-col"
+    >
+      {/* Image */}
+      <div className="flex-1 w-full h-full">
+        <img
+          src="/product.png"
+          alt="Hero Visual"
+          className="w-full h-full object-cover"
+        />
+      </div>
+
+      {/* Fake Header */}
+      <div className="h-12 border-t border-slate-100 flex items-center px-4 gap-2 bg-white">
+        <div className="w-3 h-3 rounded-full bg-red-400" />
+        <div className="w-3 h-3 rounded-full bg-amber-400" />
+        <div className="w-3 h-3 rounded-full bg-green-400" />
+      </div>
+    </motion.div>
+
+    {/* Floating Elements */}
+    <motion.div 
+      animate={{ y: [-10, 10, -10] }}
+      transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+      className="absolute top-10 right-0 md:-right-4 z-30 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3"
+    >
+      <div className="p-2 bg-green-100 text-green-600 rounded-lg">
+        <ShieldCheck size={20} />
+      </div>
+      <div>
+        <div className="text-xs text-slate-400 font-bold uppercase">Security</div>
+        <div className="text-sm font-bold text-slate-900">Enterprise Grade</div>
+      </div>
+    </motion.div>
+
+    <motion.div 
+      animate={{ y: [10, -10, 10] }}
+      transition={{ repeat: Infinity, duration: 5, ease: "easeInOut", delay: 1 }}
+      className="absolute bottom-16 left-0 md:-left-8 z-30 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3"
+    >
+      <div className="p-2 bg-orange-100 text-orange-600 rounded-lg">
+        <Zap size={20} />
+      </div>
+      <div>
+        <div className="text-xs text-slate-400 font-bold uppercase">Performance</div>
+        <div className="text-sm font-bold text-slate-900">99.9% Uptime</div>
+      </div>
+    </motion.div>
+
+    {/* Backdrop Blobs */}
+    <div className="absolute inset-0 z-0">
+      <div className="absolute top-1/4 right-1/4 w-64 h-64 bg-blue-400/20 blur-[80px] rounded-full mix-blend-multiply animate-pulse" />
+      <div className="absolute bottom-1/4 left-1/4 w-64 h-64 bg-orange-400/20 blur-[80px] rounded-full mix-blend-multiply" />
+    </div>
+  </div>
+);
+
+
 const ProductCard = ({ title, status, desc, icon: Icon, link, img, delay }) => (
   <motion.div
-    initial={{ opacity: 0, y: 20 }}
+    initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
+    viewport={{ once: true, margin: "-50px" }}
     transition={{ delay, duration: 0.5 }}
-    whileHover={{ y: -8 }}
-    className="group relative flex flex-col h-full bg-white rounded-[2rem] border border-slate-100 shadow-lg shadow-slate-200/50 hover:shadow-2xl hover:shadow-blue-900/5 transition-all duration-300 overflow-hidden"
+    whileHover={{ y: -5 }}
+    className="group relative flex flex-col h-full bg-white rounded-[2rem] border border-slate-100 shadow-xl shadow-slate-200/40 hover:shadow-2xl hover:shadow-blue-900/10 transition-all duration-300 overflow-hidden"
   >
-    {/* Image Header */}
-    <div className="h-48 overflow-hidden relative">
-      <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-10" />
-      <img src={img} alt={title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" />
-      <div className="absolute top-4 right-4 z-20">
-        <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/90 backdrop-blur-md shadow-sm ${
+    <div className="h-56 overflow-hidden relative bg-slate-100">
+      <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-10 opacity-80" />
+      <img src={img} alt={title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out" />
+      <div className="absolute top-4 left-4 z-20">
+        <span className={`px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-white/95 backdrop-blur shadow-sm border border-slate-100 ${
           status === 'Live' ? 'text-emerald-600' : 'text-orange-600'
         }`}>
           {status}
@@ -47,23 +118,22 @@ const ProductCard = ({ title, status, desc, icon: Icon, link, img, delay }) => (
       </div>
     </div>
 
-    {/* Content */}
-    <div className="p-8 flex flex-col flex-grow relative z-20">
-      <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-900 mb-6 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
-        <Icon size={28} />
+    <div className="p-8 flex flex-col flex-grow relative z-20 -mt-6">
+      <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center text-slate-900 mb-6 shadow-lg shadow-slate-200 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 border border-slate-50">
+        <Icon size={30} />
       </div>
 
-      <h3 className="text-xl font-bold text-slate-900 mb-3">{title}</h3>
-      <p className="text-slate-500 text-sm leading-relaxed mb-6 flex-grow">{desc}</p>
+      <h3 className="text-2xl font-bold text-slate-900 mb-3">{title}</h3>
+      <p className="text-slate-500 text-base leading-relaxed mb-8 flex-grow">{desc}</p>
 
       {link ? (
-        <a href={link} className="inline-flex items-center text-sm font-bold text-blue-600 group-hover:gap-2 transition-all mt-auto">
-          Launch App <ArrowRight size={16} className="ml-1 opacity-0 group-hover:opacity-100" />
+        <a href={link} className="inline-flex items-center justify-between w-full px-5 py-3 rounded-xl bg-slate-50 text-slate-700 font-bold text-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+          Launch Application <ArrowRight size={18} />
         </a>
       ) : (
-        <span className="inline-flex items-center text-sm font-bold text-slate-400 mt-auto cursor-not-allowed">
-          Coming Soon
-        </span>
+        <div className="inline-flex items-center justify-between w-full px-5 py-3 rounded-xl bg-slate-50 text-slate-400 font-bold text-sm cursor-not-allowed">
+          Coming Soon <Star size={18} />
+        </div>
       )}
     </div>
   </motion.div>
@@ -72,18 +142,17 @@ const ProductCard = ({ title, status, desc, icon: Icon, link, img, delay }) => (
 export default function AboutProductsClients() {
   const [activeTab, setActiveTab] = useState("academic");
 
-  // Transformed Client Data into the "Console" Structure
   const clientCaseStudies = {
     academic: {
       id: "academic",
       client: "Dr. Julius Caesar",
       category: "Personal Branding",
       title: "Digital Identity System",
-      desc: "A complete digital portfolio ecosystem designed for high-profile academics.",
+      desc: "A complete digital portfolio ecosystem designed for high-profile academics to showcase research and impact.",
       features: [
-        { head: "Interactive Interface", sub: "Seamless navigation of achievements and works." },
-        { head: "Publication Archive", sub: "Structured database for research papers and books." },
-        { head: "Global Accessibility", sub: "Optimized for speed and SEO worldwide." },
+        { head: "Interactive Interface", sub: "Seamless navigation of achievements." },
+        { head: "Publication Archive", sub: "Structured database for research." },
+        { head: "Global Accessibility", sub: "Optimized for speed worldwide." },
       ],
       icon: Users,
       color: "blue"
@@ -93,25 +162,25 @@ export default function AboutProductsClients() {
       client: "Our Lady of Fatima",
       category: "Institutional Tech",
       title: "Smart Campus Identity",
-      desc: "High-quality ID card systems aligned with institutional branding and security.",
+      desc: "High-quality ID card systems aligned with institutional branding and automated security protocols.",
       features: [
-        { head: "Print Optimization", sub: "High-resolution assets for physical ID cards." },
-        { head: "Brand Consistency", sub: "Unified design language across all grades." },
-        { head: "Bulk Processing", sub: "Systems to handle thousands of student records." },
+        { head: "Print Optimization", sub: "High-res assets for physical cards." },
+        { head: "Brand Consistency", sub: "Unified design across grades." },
+        { head: "Bulk Processing", sub: "Handling 5000+ student records." },
       ],
       icon: Building2,
       color: "orange"
     },
     infra: {
       id: "infra",
-      client: "Jayaraj Annapackiam College",
+      client: "J.A. College",
       category: "Infrastructure",
       title: "Enterprise Networking",
-      desc: "Technical setup and workflow enablement for smooth digital operations.",
+      desc: "Technical setup and workflow enablement for smooth digital operations in large campuses.",
       features: [
-        { head: "Network Architecture", sub: "Robust connectivity solutions for campus." },
-        { head: "Workflow Automation", sub: "Digitizing manual administrative tasks." },
-        { head: "Scalable Support", sub: "Systems built to grow with the student body." },
+        { head: "Network Architecture", sub: "Robust connectivity solutions." },
+        { head: "Workflow Automation", sub: "Digitizing administrative tasks." },
+        { head: "Scalable Support", sub: "Built to grow with the student body." },
       ],
       icon: Network,
       color: "blue"
@@ -144,64 +213,72 @@ export default function AboutProductsClients() {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-orange-100 selection:text-orange-900">
+    <div className="min-h-full bg-white text-slate-900 font-sans selection:bg-orange-100 selection:text-orange-900 overflow-x-hidden">
       <Header />
 
-      {/* ================= HERO SECTION ================= */}
-      <section className="relative pt-32 pb-20 lg:pt-35 lg:pb-32 overflow-hidden">
-        {/* Subtle Grid Background */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:40px_40px]"></div>
+      {/* ================= HERO SECTION (2-Column & Mobile Optimized) ================= */}
+      <section className="relative pt-20 pb-20 lg:pt-35 md:pb-33 overflow-hidden">
+        {/* Abstract Background Grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:24px_24px]"></div>
         
-        {/* Soft Gradient Blobs */}
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-100/50 blur-[120px] rounded-full mix-blend-multiply opacity-60 animate-pulse" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-orange-100/50 blur-[120px] rounded-full mix-blend-multiply opacity-60" />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <SectionTag color="orange">Free Will Technologies</SectionTag>
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-8 leading-[1.1]">
-              Seamlessly Unify <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-blue-600">
-                Digital Excellence
-              </span>
-            </h1>
+            {/* Left Column: Content */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-center lg:text-left order-2 lg:order-1"
+            >
+              <SectionTag color="orange">Free Will Technologies</SectionTag>
+              
+              <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.1]">
+                Unify Your <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-blue-600">
+                  Digital Potential.
+                </span>
+              </h1>
 
-            <p className="text-xl md:text-2xl text-slate-500 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
-              We build next-generation tools with craftsmanship and precision. 
-              <strong className="text-slate-900 font-semibold"> Simple. Powerful. Future-Ready.</strong>
-            </p>
+              <p className="text-lg lg:text-xl text-slate-500 mb-10 leading-relaxed font-light max-w-lg mx-auto lg:mx-0">
+                We craft the tools that power the next generation of institutions and professionals. Our creative team also specializes in graphic design to ensure your brand 
+looks as strong as it performs. Every solution we deliver is crafted with 
+modern tools, strategic thinking, and a commitment to excellence
+                <strong className="text-slate-900 font-medium"> Simple. Powerful. Future-Ready.</strong>
+              </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a 
-                href="https://wa.me/919626806328"
-                className="w-full sm:w-auto px-8 py-4 bg-slate-900 text-white rounded-xl font-bold shadow-xl shadow-slate-900/20 hover:bg-slate-800 hover:-translate-y-1 transition-all duration-300"
-              >
-                Start a Project
-              </a>
-              <button className="w-full sm:w-auto px-8 py-4 bg-white border border-slate-200 text-slate-700 rounded-xl font-semibold hover:bg-slate-50 hover:border-slate-300 flex items-center justify-center gap-2 transition-all duration-300">
-                <PlayCircle size={20} className="text-orange-500" /> Watch Our Vision
-              </button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                <a 
+                  href="https://wa.me/919626806328"
+                  className="px-8 py-4 bg-slate-900 text-white rounded-2xl font-bold shadow-2xl shadow-slate-900/20 hover:bg-slate-800 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  Get In Touch <ChevronRight size={18} />
+                </a>
+              </div>
+
+            </motion.div>
+
+            {/* Right Column: Visual Composition */}
+            <div className="order-1 lg:order-2">
+               <HeroGraphic />
             </div>
-          </motion.div>
+
+          </div>
         </div>
       </section>
 
-      {/* ================= PRODUCTS (Bento Style) ================= */}
-      <section className="py-24 bg-slate-50/50 border-y border-slate-100">
+      {/* ================= PRODUCTS (Bento Cards) ================= */}
+      <section className="py-24 bg-slate-50/80 border-y border-slate-200/60 backdrop-blur-sm">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              Our Product Ecosystem
-            </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-orange-500 to-blue-600 mx-auto rounded-full mb-4" />
-            <p className="text-slate-500 max-w-2xl mx-auto">
-              Tools crafted with intent — enabling individuals and enterprises to reach their full potential.
-            </p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div className="max-w-2xl">
+              <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-4 tracking-tight">
+                Our Product Ecosystem
+              </h2>
+              <p className="text-lg text-slate-500">
+                Tools crafted with intent—enabling seamless operations for individuals and enterprises.
+              </p>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -209,9 +286,15 @@ export default function AboutProductsClients() {
               <ProductCard 
                 key={i}
                 {...p}
-                delay={i * 0.1}
+                delay={i * 0.15}
               />
             ))}
+          </div>
+          
+          <div className="mt-8 md:hidden text-center">
+            <a href="#" className="inline-flex items-center font-bold text-blue-600 gap-2">
+              View All Products <ArrowRight size={20} />
+            </a>
           </div>
         </div>
       </section>
@@ -219,16 +302,16 @@ export default function AboutProductsClients() {
       {/* ================= CLIENTS (Interactive Tabs) ================= */}
       <section className="py-24 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="mb-12">
+          <div className="mb-16 text-center lg:text-left">
             <SectionTag>Success Stories</SectionTag>
-            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mt-4 max-w-3xl">
-              Trusted by Professionals & Institutions
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mt-4 tracking-tight">
+              Impact That Matters
             </h2>
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
             {/* Left: Tab Navigation */}
-            <div className="lg:w-1/3 flex flex-col gap-4">
+            <div className="lg:w-1/3 flex flex-col gap-3">
               {Object.keys(clientCaseStudies).map((key) => {
                 const item = clientCaseStudies[key];
                 const isActive = activeTab === key;
@@ -236,19 +319,19 @@ export default function AboutProductsClients() {
                   <button
                     key={key}
                     onClick={() => setActiveTab(key)}
-                    className={`text-left p-6 rounded-2xl transition-all duration-300 border group ${
+                    className={`text-left p-5 rounded-2xl transition-all duration-300 border-2 relative overflow-hidden group ${
                       isActive 
-                        ? "bg-white border-blue-200 shadow-xl shadow-blue-900/5 scale-105 z-10" 
-                        : "bg-slate-50 border-transparent hover:bg-slate-100 text-slate-400"
+                        ? "bg-white border-blue-600 shadow-xl shadow-blue-900/5 lg:translate-x-4" 
+                        : "bg-slate-50 border-transparent hover:bg-slate-100"
                     }`}
                   >
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4 relative z-10">
                       <div className={`p-3 rounded-xl transition-colors ${isActive ? 'bg-blue-600 text-white' : 'bg-white text-slate-400 group-hover:text-blue-500'}`}>
-                        <item.icon size={24} />
+                        <item.icon size={22} />
                       </div>
                       <div>
-                        <h3 className={`font-bold text-lg ${isActive ? 'text-slate-900' : 'text-slate-500'}`}>{item.client}</h3>
-                        <p className={`text-xs font-bold uppercase tracking-wider mt-1 ${isActive ? 'text-blue-600' : 'text-slate-400'}`}>
+                        <h3 className={`font-bold text-base md:text-lg ${isActive ? 'text-slate-900' : 'text-slate-500'}`}>{item.client}</h3>
+                        <p className={`text-xs font-bold uppercase tracking-wider ${isActive ? 'text-blue-600' : 'text-slate-400'}`}>
                           {item.category}
                         </p>
                       </div>
@@ -259,7 +342,7 @@ export default function AboutProductsClients() {
             </div>
 
             {/* Right: Content Display */}
-            <div className="lg:w-2/3">
+            <div className="lg:w-2/3 min-h-[500px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeTab}
@@ -267,48 +350,47 @@ export default function AboutProductsClients() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.4 }}
-                  className="bg-white rounded-[2.5rem] p-8 md:p-12 border border-slate-100 shadow-2xl shadow-slate-200/50 relative overflow-hidden h-full"
+                  className="bg-white rounded-[2.5rem] p-8 md:p-12 border border-slate-100 shadow-2xl shadow-slate-200/50 relative overflow-hidden h-full flex flex-col justify-between"
                 >
-                  {/* Decorative Gradient Background */}
-                  <div className={`absolute top-0 right-0 w-[400px] h-[400px] rounded-full blur-[100px] opacity-20 pointer-events-none ${
-                    clientCaseStudies[activeTab].color === 'orange' ? 'bg-orange-500' : 'bg-blue-600'
+                  {/* Decorative Background */}
+                  <div className={`absolute -top-24 -right-24 w-96 h-96 rounded-full blur-[80px] opacity-30 pointer-events-none ${
+                    clientCaseStudies[activeTab].color === 'orange' ? 'bg-orange-400' : 'bg-blue-500'
                   }`} />
 
                   <div className="relative z-10">
-                    <div className="flex items-center gap-2 mb-4">
-                      <Star className="text-orange-500 fill-orange-500" size={20} />
-                      <span className="font-bold text-slate-400 text-sm">Success Story</span>
+                    <div className="flex items-center gap-2 mb-6">
+                      <div className="bg-yellow-50 text-yellow-600 px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 border border-yellow-100">
+                         <Star size={12} fill="currentColor" /> 
+                      </div>
                     </div>
 
-                    <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                    <h3 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6">
                       {clientCaseStudies[activeTab].title}
                     </h3>
-                    <p className="text-lg text-slate-500 mb-8 leading-relaxed max-w-xl">
+                    <p className="text-lg text-slate-500 mb-10 leading-relaxed max-w-2xl">
                       {clientCaseStudies[activeTab].desc}
                     </p>
 
-                    <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100">
-                      <ul className="space-y-6">
-                        {clientCaseStudies[activeTab].features.map((feat, idx) => (
-                          <li key={idx} className="flex gap-4 items-start">
-                            <div className="mt-1 bg-white border border-slate-200 text-green-600 p-1.5 rounded-full shadow-sm">
-                              <CheckCircle2 size={16} />
-                            </div>
-                            <div>
-                              <h4 className="font-bold text-slate-900">{feat.head}</h4>
-                              <p className="text-sm text-slate-500 mt-1">{feat.sub}</p>
-                            </div>
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {clientCaseStudies[activeTab].features.map((feat, idx) => (
+                        <div key={idx} className="bg-slate-50 p-4 rounded-2xl border border-slate-100 hover:border-blue-200 transition-colors">
+                          <h4 className="font-bold text-slate-900 text-sm mb-1 flex items-center gap-2">
+                             <CheckCircle2 size={14} className="text-green-500" /> {feat.head}
+                          </h4>
+                          <p className="text-sm text-slate-500 pl-6">{feat.sub}</p>
+                        </div>
+                      ))}
                     </div>
+                  </div>
 
-                    <div className="mt-8 pt-6 border-t border-slate-100 flex items-center justify-between">
-                       <span className="text-slate-400 text-sm font-semibold">Result: 100% Client Satisfaction</span>
-                       <button className="text-blue-600 font-bold flex items-center gap-2 hover:gap-4 transition-all">
-                         View Details <ChevronRight size={18} />
-                       </button>
-                    </div>
+                  <div className="mt-10 pt-8 border-t border-slate-100 flex flex-wrap items-center justify-between gap-4 relative z-10">
+                     <div className="flex items-center gap-3">
+                        <div className="flex -space-x-2">
+                          <div className="w-8 h-8 rounded-full bg-slate-200 border-2 border-white"/>
+                          <div className="w-8 h-8 rounded-full bg-slate-300 border-2 border-white"/>
+                        </div>
+                        <span className="text-slate-500 text-sm font-medium">Verified Client</span>
+                     </div>
                   </div>
                 </motion.div>
               </AnimatePresence>
@@ -318,32 +400,33 @@ export default function AboutProductsClients() {
       </section>
 
       {/* ================= CTA SECTION ================= */}
-      <section className="py-24 bg-[#0F172A] text-white relative overflow-hidden">
-        {/* Abstract shapes */}
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/10 blur-[120px] rounded-full animate-pulse" />
+      <section className="py-24 bg-[#0B1120] text-white relative overflow-hidden">
+        {/* Modern Gradient Mesh */}
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-blue-600/20 blur-[120px] rounded-full animate-pulse" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-orange-500/10 blur-[120px] rounded-full" />
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03]" />
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.05]" />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+        <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight leading-tight">
               Ready to Build the <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-blue-400">
                 Future Together?
               </span>
             </h2>
-            <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-10 font-light">
-              Join the institutions and professionals scaling their potential with Free Will Technologies.
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-12 font-light">
+              Join the forward-thinking institutions and professionals scaling their potential with Free Will Technologies.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-6">
               <a 
                 href="https://wa.me/919626806328"
-                className="px-10 py-5 bg-blue-600 rounded-2xl font-bold text-lg shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 hover:-translate-y-1 transition-all duration-300"
+                className="px-10 py-5 bg-blue-600 text-white rounded-2xl font-bold text-lg shadow-xl shadow-blue-600/20 hover:shadow-blue-600/40 hover:-translate-y-1 transition-all duration-300"
               >
                 Get in Touch
               </a>

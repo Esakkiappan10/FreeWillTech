@@ -13,6 +13,7 @@ import {
   Cpu,
   Globe
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
 /* --- ASSETS & DATA --- */
 const values = [
@@ -92,12 +93,16 @@ const Mission = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="mt-10"
+              className="mt-11"
             >
-              <button className="group flex items-center gap-3 px-8 py-4 bg-slate-900 text-white rounded-full font-semibold hover:bg-[#FE861B] transition-colors duration-300 shadow-lg hover:shadow-[#FE861B]/25">
-                Explore Our Services
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+            <Link 
+  to="/service"
+  className="group flex items-center gap-3 px-8 py-4 bg-slate-900 text-white rounded-full font-semibold hover:bg-[#FE861B] transition-colors duration-300 shadow-lg hover:shadow-[#FE861B]/25 w-fit"
+>
+  Explore Our Services
+  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+</Link>
+
             </motion.div>
           </motion.div>
 

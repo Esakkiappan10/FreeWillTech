@@ -26,7 +26,7 @@ const servicesDesign = [
 const companyLinks = [
   { name: "About Us", href: "/about" },
   { name: "Contact", href: "/contact" },
-  { name: "Services", href: "/services" },
+  { name: "Services", href: "/service" },
   { name: "Products", href: "/products" },
   { name: "CSR Initiatives", href: "/csr" },
   { name: "Testimonials", href: "/testimonials" } 
@@ -88,7 +88,7 @@ export default function Footer() {
                 <ul className="space-y-2.5">
                     {servicesDev.map((item, i) => (
                         <li key={i}>
-                            <a href="/services" className="text-xs md:text-sm hover:text-[#1E9CD7] transition-colors flex items-center gap-2 group">
+                            <a href="/service" className="text-xs md:text-sm hover:text-[#1E9CD7] transition-colors flex items-center gap-2 group">
                                 <span className="w-1 h-1 rounded-full bg-slate-600 group-hover:bg-[#1E9CD7] transition-colors" />
                                 {item}
                             </a>
@@ -103,7 +103,7 @@ export default function Footer() {
                 <ul className="space-y-2.5">
                     {servicesDesign.map((item, i) => (
                         <li key={i}>
-                            <a href="/services" className="text-xs md:text-sm hover:text-[#FE861B] transition-colors flex items-center gap-2 group">
+                            <a href="/service" className="text-xs md:text-sm hover:text-[#FE861B] transition-colors flex items-center gap-2 group">
                                 <span className="w-1 h-1 rounded-full bg-slate-600 group-hover:bg-[#FE861B] transition-colors" />
                                 {item}
                             </a>
@@ -134,9 +134,16 @@ export default function Footer() {
                     <div className="flex items-start gap-3">
                         <MapPin className="w-4 h-4 text-[#FE861B] mt-0.5 shrink-0" />
                         <p className="text-xs md:text-sm leading-relaxed">
-                          Joseph Startup Centre, Trichy,<br/> Tamil Nadu 620002
+                          Joseph Startup Centre, Trichy,<br/> Tamil Nadu - 620 002
                         </p>
                     </div>
+                      <div className="flex items-start gap-3">
+                        <MapPin className="w-4 h-4 text-[#FE861B] mt-0.5 shrink-0" />
+                        <p className="text-xs md:text-sm leading-relaxed">
+                            <span className="text-orange-500 font-bold">Registered Address :</span> 63 B/5, Vallioor<br/>Tirunelveli Dt, Tamil Nadu,<br/> India - 627 117
+                        </p>
+                    </div>
+              
 
                     <a href="mailto:contact@freewilltech.in" className="flex items-center gap-3 group">
                         <Mail className="w-4 h-4 text-[#1E9CD7] group-hover:text-white transition-colors" />

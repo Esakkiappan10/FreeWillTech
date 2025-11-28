@@ -123,11 +123,11 @@ export default function Header() {
         {/* Title */}
         <motion.h1
           variants={fadeUp}
-          className="text-4xl sm:text-5xl md:text-6xl xl:text-[5rem] font-extrabold tracking-tighter text-slate-900 leading-[1.1] mb-6"
+          className="text-5xl sm:text-5xl md:text-6xl xl:text-[4.6rem] font-extrabold tracking-tighter text-slate-900 leading-[1.1] mb-6"
         >
           We empower growth <br />
           <span className="gradient-text bg-gradient-to-r from-[#1E9CD7] via-[#FE861B] to-[#1E9CD7] bg-clip-text text-transparent bg-[length:200%_auto] pb-2">
-            through innovation.
+            through innovation
           </span>
         </motion.h1>
 
@@ -158,18 +158,8 @@ export default function Header() {
           className="flex flex-wrap justify-center lg:justify-start gap-4 sm:gap-6"
         >
           <a
-            href="/contact"
-            className="group relative px-8 py-4 bg-[#1E9CD7] text-white rounded-full overflow-hidden shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40 transition-all duration-300"
-          >
-            <div className="absolute inset-0 bg-[#FE861B] translate-y-full group-hover:translate-y-0 transition duration-300 ease-in-out" />
-            <span className="relative flex items-center gap-2 font-bold text-lg">
-              Start a Project <ArrowRight size={20} />
-            </span>
-          </a>
-
-          <a
             href="/service"
-            className="group px-8 py-4 bg-white border-2 border-slate-200 text-slate-700 rounded-full font-bold text-lg hover:border-[#1E9CD7] hover:text-[#1E9CD7] transition-all flex items-center gap-2 shadow-sm hover:shadow-md"
+            className="group px-8 py-4 bg-blue-500 border-2 border-white text-slate-900 rounded-full font-bold text-lg hover:border-[#1E9CD7] hover:text-[#f97d02] transition-all flex items-center gap-2 shadow-sm hover:shadow-md"
           >
             Explore Services{" "}
             <ArrowDownRight
