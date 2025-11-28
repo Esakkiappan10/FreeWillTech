@@ -112,15 +112,20 @@ export default function Header() {
       : "bg-white/60 backdrop-blur-md h-24"
     }`}
 >
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-8 h-full flex items-center justify-between">
+        <div className="max-w-[1400px] mx-auto px-6 sm:px-6 lg:px-14 h-full flex items-center justify-between">
           
           {/* Logo */}
           <Link to="/" className="flex-shrink-0 group">
-            <img 
-              src={logo} 
-              alt="Free Will Technologies" 
-              className={`px-12 w-27 transition-all duration-300 ${isScrolled ? "h-12" : "h-24"}`} 
-            />
+<img
+  src={logo}
+  alt="Free Will Technologies"
+  className={`
+    transition-all duration-300
+    ${isScrolled ? "h-13 lg:h-16" : "h-16 lg:h-24"}
+    w-auto lg:w-[230px]
+  `}
+/>
+
           </Link>
 
           {/* Desktop Nav */}
@@ -200,7 +205,7 @@ export default function Header() {
               </div>
 
               {/* Links */}
-              <div className="flex-1 overflow-y-auto p-6 py-8">
+              <div className="flex-1 overflow-y-auto p-6 py-8 max-h-[calc(100vh-180px)]">
                  <ul className="flex flex-col gap-4">
                     {navLinks.map((link, i) => (
                        <motion.li 
