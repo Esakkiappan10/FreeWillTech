@@ -33,7 +33,7 @@ const companyLinks = [
 ];
 
 const socialLinks = [
-  { icon: Linkedin, href: "https://www.linkedin.com/company/free-w-will-technologies/", color: "hover:bg-[#0077b5] hover:border-[#0077b5]" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/free-will-technologies/", color: "hover:bg-[#0077b5] hover:border-[#0077b5]" },
   { icon: Instagram, href: "https://www.instagram.com/freewill_tech/", color: "hover:bg-[#E1306C] hover:border-[#E1306C]" },
   { icon: FaWhatsapp, href: "https://wa.me/916382503265", color: "hover:bg-[#25D366] hover:border-[#25D366]" },
 ];
