@@ -104,7 +104,7 @@ export default function TransitionLayer({ active }) {
                 
                 {/* Brand Text */}
                 <span className="text-white font-bold text-2xl tracking-widest uppercase font-sans">
-                  FreeWill
+                  Frontier Wox Tech
                 </span>
               </div>
             </motion.div>

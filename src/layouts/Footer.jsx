@@ -2,7 +2,7 @@
 import React from "react";
 import { Linkedin, Instagram, Mail, MapPin, Phone, ChevronRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import { logo } from "../assets/image"; 
+import logo from "../../public/new_logo_small.jpeg"; 
 
 const servicesDev = [
   "Web Development",

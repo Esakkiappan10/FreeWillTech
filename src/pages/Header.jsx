@@ -143,7 +143,7 @@ export default function Header() {
         {/* Description with SplitText */}
         <motion.div variants={fadeUp} className="max-w-xl mb-10">
           <SplitText
-            text="At FreeWill Technologies, we build intelligent web and mobile solutions, empower startups with tech consultation, and create bridges between education and innovation. Together, we’re shaping the future of digital transformation."
+            text="At Frontier Wox Technologies, we build intelligent web and mobile solutions, empower startups with tech consultation, and create bridges between education and innovation. Together, we’re shaping the future of digital transformation."
             className="text-base sm:text-lg text-slate-500 leading-relaxed font-light"
             splitType="words"
             stagger={0.008}

@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { Routes, Route, useLocation, BrowserRouter } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import TransitionLayer from "./TransitionLayer";
-
 import Home from "../pages/Home";
 import Service from "../pages/Service";
 import About from "../pages/About";

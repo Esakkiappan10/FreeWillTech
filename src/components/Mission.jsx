@@ -75,7 +75,7 @@ const Mission = () => {
 
             <div className="space-y-6 text-lg md:text-xl leading-relaxed text-slate-600">
               <p>
-                At <span className="font-bold text-slate-900">Free Will Technologies</span>, our mission is to deliver smart, scalable, and 
+                At <span className="font-bold text-slate-900">Frontier Wox Technologies</span>, our mission is to deliver smart, scalable, and 
                 design-driven solutions that bridge the gap between{" "}
                 <span className="text-slate-900 font-semibold border-b-2 border-[#FE861B]/30">engineering excellence</span>
                 {" "}and{" "}
