@@ -122,7 +122,7 @@ export default function ServiceHeroSection() {
                 transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
                 className="text-lg sm:text-xl text-slate-500 max-w-xl leading-relaxed border-l-4 border-slate-200 pl-6"
               >
-                Free Will Technologies crafts high-impact web platforms, mobile applications, and automation systems 
+                Frontier Wox Technologies crafts high-impact web platforms, mobile applications, and automation systems 
                 built for modern businesses, ensuring reliability and meaningful growth.
               </motion.p>
 
@@ -202,7 +202,7 @@ export default function ServiceHeroSection() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6"
             >
-              Why Choose <span className="text-blue-600">Free Will?</span>
+              Why Choose <span className="text-blue-600">Frontier Wox?</span>
             </motion.h2>
             <motion.div 
               initial={{ width: 0 }} 

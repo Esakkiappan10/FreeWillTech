@@ -209,7 +209,7 @@ export default function ServiceHeroSections() {
               className="space-y-6 text-lg text-slate-600 leading-relaxed"
             >
               <p>
-                At <span className="font-bold text-slate-900">Free Will Technologies</span>, 
+                At <span className="font-bold text-slate-900">Frontier Wox Technologies</span>, 
                 we don't just write code; we craft world-class digital ecosystems that elevate brands and empower exponential growth.
               </p>
               

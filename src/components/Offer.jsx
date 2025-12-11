@@ -82,7 +82,7 @@ export default function Offer() {
                Why Choose Us
              </span>
              <h2 className="text-4xl lg:text-6xl font-extrabold text-slate-900 tracking-tight">
-               The Pillars of <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1E9CD7] to-[#FE861B]">Free Will</span>
+               The Pillars of <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1E9CD7] to-[#FE861B]">Frontier Wox</span>
              </h2>
              <p className="mt-6 text-lg text-slate-500 max-w-2xl mx-auto">
                Foundationally strong, strategically driven, and technically advanced. 

@@ -82,7 +82,7 @@ export default function TestimonialsSection() {
             </motion.h2>
             
             <p className="text-lg text-slate-500 max-w-lg leading-relaxed">
-              Discover how <span className="font-bold text-slate-900">Free Will Technologies</span> shapes careers. From interns to full-stack engineers, hear it from the people who lived it.
+              Discover how <span className="font-bold text-slate-900">Frontier Wox Technologies</span> shapes careers. From interns to full-stack engineers, hear it from the people who lived it.
             </p>
           </div>
 

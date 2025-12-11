@@ -189,7 +189,7 @@ export default function AboutProductsClients() {
 
   const products = [
     {
-      title: "Free Will Resume",
+      title: "Frontier Wox Tech Resume",
       status: "Live",
       desc: "Smart, elegant, and AI-enhanced resume templates with instant export & professional layouts.",
       icon: Briefcase,
@@ -204,7 +204,7 @@ export default function AboutProductsClients() {
       img: "https://tse1.mm.bing.net/th/id/OIP.2g4_Zqc-IXcapal7GUfWlgHaET?rs=1&pid=ImgDetMain&o=7&rm=3",
     },
     {
-      title: "Free Will People",
+      title: "Frontier Wox People",
       status: "Enterprise",
       desc: "A complete HRMS: attendance, payroll, onboarding, leave tracking, and automated workflows.",
       icon: Wrench,
@@ -231,7 +231,7 @@ export default function AboutProductsClients() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="text-center lg:text-left order-1 lg:order-1">
 
-              <SectionTag color="orange">Free Will Technologies</SectionTag>
+              <SectionTag color="orange">Frontier Wox Technologies</SectionTag>
               
               <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.1]">
                 Unify Your <br />
@@ -420,7 +420,7 @@ modern tools, strategic thinking, and a commitment to excellence
               </span>
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-12 font-light">
-              Join the forward-thinking institutions and professionals scaling their potential with Free Will Technologies.
+              Join the forward-thinking institutions and professionals scaling their potential with Frontier Wox Technologies.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-6">

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Menu, X, Linkedin, Instagram, Mail, Clock, Phone, ChevronRight, } from "lucide-react";
-import logo from "../assets/fulllogo.png";
+import logo from "../assets/new_logo.jpeg";
 import { FaWhatsapp } from "react-icons/fa";
 
 const navLinks = [
@@ -137,7 +137,7 @@ export default function Header() {
           <Link to="/" className="flex-shrink-0 group">
 <img
   src={logo}
-  alt="Free Will Technologies"
+  alt="Frontier Wox Technologies"
   className={`
     transition-all duration-300
     ${isScrolled ? "h-10 lg:h-14" : "h-16 lg:h-24"}

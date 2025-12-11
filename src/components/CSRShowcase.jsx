@@ -151,7 +151,7 @@ export default function CSRShowcase() {
 
               <div className="prose prose-lg text-slate-600 leading-relaxed">
                 <p className="mb-6">
-                  <span className="font-bold text-orange-600">Free Will Technologies</span>, in collaboration with the 
+                  <span className="font-bold text-orange-600">Frontier Wox Technologies</span>, in collaboration with the 
                   <span className="font-semibold text-slate-900"> PG & Research Department of Computer Science </span> 
                   at St. Joseph’s College (Autonomous), Tiruchirappalli, successfully conducted a comprehensive awareness program.
                 </p>

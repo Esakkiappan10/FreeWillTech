@@ -144,7 +144,7 @@ export default function ContactSection() {
           >
             {/* GOOGLE MAP IFRAME */}
             <iframe
-              title="Free Will Technologies Location"
+              title="Frontier Wox Technologies Location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4660.23688817826!2d78.68875519222385!3d10.828409151135602!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baaf52960c0703f%3A0x85c6e9b436f50934!2sFree%20Will%20Technologies!5e0!3m2!1sen!2sin!4v1763567644985!5m2!1sen!2sin" 
               style={{ border: 0, filter: "grayscale(20%) contrast(1.2)" }}
               allowFullScreen=""
