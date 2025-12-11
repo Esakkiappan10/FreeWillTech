@@ -178,7 +178,7 @@ export default function ContactSection() {
                       </div>
                       <div className="overflow-hidden">
                         <h4 className="font-bold text-slate-900 text-xs">Email</h4>
-                        <p className="text-slate-500 text-[10px] truncate">contact@freewilltech.in</p>
+                        <p className="text-slate-500 text-[10px] truncate">hr@frontierwox.in</p>
                       </div>
                    </div>
 

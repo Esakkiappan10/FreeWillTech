@@ -35,7 +35,7 @@ const handleSubmit = (e) => {
     `Service Required: ${service}\r\n\r\n` +
     `Message:\r\n${message}`;
 
-  const mailtoLink = `mailto:contact@freewilltech.in?subject=${encodeURIComponent(
+  const mailtoLink = `mailto:hr@frontierwox.in?subject=${encodeURIComponent(
     subject
   )}&body=${encodeURIComponent(body)}`;
 
@@ -81,8 +81,8 @@ const handleSubmit = (e) => {
                 <ContactCard 
                     icon={Mail} 
                     label="Email Us" 
-                    value="contact@freewilltech.in" 
-                    href="mailto:contact@freewilltech.in"
+                    value="hr@frontierwox.in" 
+                    href="mailto:hr@frontierwox.in"
                     color="text-[#FE861B]"
                 />
                 <ContactCard 

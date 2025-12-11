@@ -2,7 +2,7 @@
 import React from "react";
 import { Linkedin, Instagram, Mail, MapPin, Phone, ChevronRight } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import logo from "../../public/new_logo_small.jpeg"; 
+import logo from "../assets/new_logo_small.jpeg"; 
 
 const servicesDev = [
   "Web Development",
@@ -33,8 +33,8 @@ const companyLinks = [
 ];
 
 const socialLinks = [
-  { icon: Linkedin, href: "https://www.linkedin.com/company/free-will-technologies/", color: "hover:bg-[#0077b5] hover:border-[#0077b5]" },
-  { icon: Instagram, href: "https://www.instagram.com/freewill_tech/", color: "hover:bg-[#E1306C] hover:border-[#E1306C]" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/frontierwox-tech", color: "hover:bg-[#0077b5] hover:border-[#0077b5]" },
+  { icon: Instagram, href: "https://www.instagram.com/frontierwox_tech/", color: "hover:bg-[#E1306C] hover:border-[#E1306C]" },
   { icon: FaWhatsapp, href: "https://wa.me/916382503265", color: "hover:bg-[#25D366] hover:border-[#25D366]" },
 ];
 
@@ -145,7 +145,7 @@ export default function Footer() {
                     </div>
               
 
-                    <a href="mailto:contact@freewilltech.in" className="flex items-center gap-3 group">
+                    <a href="mailto:hr@frontierwox.in" className="flex items-center gap-3 group">
                         <Mail className="w-4 h-4 text-[#1E9CD7] group-hover:text-white transition-colors" />
                         <span className="text-xs md:text-sm group-hover:text-white transition-colors">contact@freewilltech.in</span>
                     </a>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Menu, X, Linkedin, Instagram, Mail, Clock, Phone, ChevronRight, } from "lucide-react";
-import logo from "../assets/new_logo.jpeg";
+import logo from "../assets/Original.png";
 import { FaWhatsapp } from "react-icons/fa";
 
 const navLinks = [
@@ -17,8 +17,8 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { icon: Linkedin, href: "https://www.linkedin.com/company/free-will-technologies/", color: "hover:bg-[#0077b5]" },
-  { icon: Instagram, href: "https://www.instagram.com/freewill_tech/", color: "hover:bg-[#E1306C]" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/frontierwox-tech", color: "hover:bg-[#0077b5]" },
+  { icon: Instagram, href: "https://www.instagram.com/frontierwox_tech/", color: "hover:bg-[#E1306C]" },
   { icon: FaWhatsapp, href: "https://wa.me/916382503265", color: "hover:bg-[#25D366]" },
 ];
 
@@ -78,7 +78,7 @@ export default function Header() {
     className="flex items-center gap-3 hover:text-white transition-colors"
   >
     <Mail size={22} className="text-[#1E9CD7]" />
-    <span className="text-[13px] font-semibold">contact@freewilltech.in</span>
+    <span className="text-[13px] font-semibold">hr@frontierwox.in</span>
   </a>
 
   <div className="w-[1px] h-4 bg-slate-700" />

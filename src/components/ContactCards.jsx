@@ -32,11 +32,11 @@ const directContact = [
   },
   {
     title: "Email",
-    value: "contact@freewilltech.in",
+    value: "hr@frontierwox.in",
     sub: "Online Support 24/7",
     icon: Mail,
     action: "Send Email",
-    href: "mailto:contact@freewilltech.in",
+    href: "mailto:hr@frontierwox.in",
     color: "orange"
   }
 ];

@@ -234,7 +234,7 @@ const ContactInfo = () => {
 
   {/* =================== LINKEDIN =================== */}
   <motion.a 
-    href="https://www.linkedin.com/company/free-will-technologies/"
+    href="https://www.linkedin.com/company/frontierwox-tech"
     target="_blank"
     rel="noreferrer"
     variants={item}
@@ -259,7 +259,7 @@ const ContactInfo = () => {
 
   {/* =================== INSTAGRAM =================== */}
   <motion.a 
-    href="https://www.instagram.com/freewill_tech"
+    href="https://www.instagram.com/frontierwox_tech"
     target="_blank"
     rel="noreferrer"
     variants={item}
@@ -284,7 +284,7 @@ const ContactInfo = () => {
 
   {/* =================== EMAIL (NEW CARD) =================== */}
   <motion.a 
-    href="mailto:contact@freewilltech.in"
+    href="mailto:hr@frontierwox.in"
     variants={item}
     whileHover={{ y: -8 }}
     className="group relative p-8 bg-white rounded-[2rem] border border-slate-100 shadow-lg hover:border-green-200 transition-all duration-300"
@@ -297,7 +297,7 @@ const ContactInfo = () => {
       </div>
       <h4 className="text-lg font-bold text-slate-900 mb-1">Email Us</h4>
       <p className="text-xl font-bold text-slate-700 group-hover:text-green-600 transition-colors truncate">
-        contact@freewilltech.in
+        hr@frontierwox.in
       </p>
       <p className="text-sm text-slate-400 mt-2 font-medium flex items-center gap-1">
         Send a Message <ArrowUpRight size={14} />
