@@ -21,7 +21,7 @@ const PagePlaceholder = ({ title, color }) => (
 
 const ResumeRedirect = () => {
   useEffect(() => {
-    window.location.href = "https://resumebuilder.freewilltech.in/";
+    window.location.href = "https://resumebuilder.frontierwox.in/";
   }, []);
   return null;
 };
