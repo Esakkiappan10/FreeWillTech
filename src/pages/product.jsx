@@ -189,7 +189,7 @@ export default function AboutProductsClients() {
 
   const products = [
     {
-      title: "Frontier Wox Tech Resume",
+      title: "FrontierWox Tech Resume",
       status: "Live",
       desc: "Smart, elegant, and AI-enhanced resume templates with instant export & professional layouts.",
       icon: Briefcase,
@@ -204,7 +204,7 @@ export default function AboutProductsClients() {
       img: "https://tse1.mm.bing.net/th/id/OIP.2g4_Zqc-IXcapal7GUfWlgHaET?rs=1&pid=ImgDetMain&o=7&rm=3",
     },
     {
-      title: "Frontier Wox People",
+      title: "FrontierWox People",
       status: "Enterprise",
       desc: "A complete HRMS: attendance, payroll, onboarding, leave tracking, and automated workflows.",
       icon: Wrench,
