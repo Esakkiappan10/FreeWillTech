@@ -147,7 +147,7 @@ export default function Footer() {
 
                     <a href="mailto:hr@frontierwox.in" className="flex items-center gap-3 group">
                         <Mail className="w-4 h-4 text-[#1E9CD7] group-hover:text-white transition-colors" />
-                        <span className="text-xs md:text-sm group-hover:text-white transition-colors">contact@freewilltech.in</span>
+                        <span className="text-xs md:text-sm group-hover:text-white transition-colors">hr@frontierwox.in</span>
                     </a>
 
                     <a href="tel:+919626806328" className="flex items-center gap-3 group">
