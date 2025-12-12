@@ -59,7 +59,7 @@ export default function Footer() {
             <div className="flex items-center gap-3">
                 <img src={logo} alt="Logo" className="w-10 h-10 rounded-full border border-slate-700" />
                 <span className="text-xl font-bold text-white tracking-tight">
-                    Frontier Wox <span className="text-[#1E9CD7]">Technologies</span>
+                    FrontierWox <span className="text-[#1E9CD7]">Technologies</span>
                 </span>
             </div>
 
@@ -160,7 +160,7 @@ export default function Footer() {
 
         {/* --- BOTTOM ROW --- */}
         <div className="flex flex-col md:flex-row justify-center items-center gap-4 text-[10px] md:text-xs text-orange-500 border-t border-slate-800/50 pt-3">
-          <p>© {currentYear} Frontier Wox Technologies. All rights reserved.</p>
+          <p>© {currentYear} FrontierWox Tech Private Limited. All rights reserved.</p>
         </div>
 
       </div>

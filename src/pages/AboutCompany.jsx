@@ -138,7 +138,7 @@ export default function AboutCompany() {
                 transition={{ duration: 0.6 }}
             >
                 <span className="inline-block py-1.5 px-4 rounded-full bg-blue-100/50 border border-blue-200 text-[#1E9CD7] font-bold tracking-wider uppercase text-[10px] md:text-xs mb-5">
-                    Frontier Wox Tech Expertise
+                    FrontierWox Tech Expertise
                 </span>
                 <h2 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-[1.15] tracking-tight mb-6">
                   We build digital <br className="hidden md:block" />
@@ -147,7 +147,7 @@ export default function AboutCompany() {
                   </span>
                 </h2>
                 <p className="text-base md:text-lg text-slate-600 leading-relaxed md:px-8">
-                  At <strong>Frontier Wox Tech</strong>, we move from complex cloud architectures to pixel-perfect design. Our comprehensive services cover every aspect of the digital lifecycle.
+                  At <strong>FrontierWox Tech</strong>, we move from complex cloud architectures to pixel-perfect design. Our comprehensive services cover every aspect of the digital lifecycle.
                 </p>
             </motion.div>
         </div>

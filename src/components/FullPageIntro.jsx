@@ -85,7 +85,7 @@ export default function FullPageIntro({
               letterSpacing: " -0.02em",
             }}
           >
-            Frontier Wox<span style={{ color: "#5EC3F0" }}>Technologies</span>
+            FrontierWox<span style={{ color: "#5EC3F0" }}></span>
           </h1>
           <p style={{ color: "rgba(255,255,255,0.75)", marginTop: 12, pointerEvents: "auto" }}>
             Building next-generation web experiences

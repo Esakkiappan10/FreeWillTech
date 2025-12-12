@@ -194,7 +194,7 @@ export default function AboutProductsClients() {
       desc: "Smart, elegant, and AI-enhanced resume templates with instant export & professional layouts.",
       icon: Briefcase,
       img: "https://www.workruit.com/_next/image/?url=https:%2F%2Fd2rac4ixos46cj.cloudfront.net%2Fwebsiteimages%2Fimages%2Fpng%2FCV_Builder_best.png&w=1080&q=75",
-      link: "https://resumebuilder.freewilltech.in/",
+      link: "https://resumebuilder.frontierwox.in/",
     },
     {
       title: "Portfolio Builder",
@@ -231,7 +231,7 @@ export default function AboutProductsClients() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="text-center lg:text-left order-1 lg:order-1">
 
-              <SectionTag color="orange">Frontier Wox Technologies</SectionTag>
+              <SectionTag color="orange">FrontierWox Tech</SectionTag>
               
               <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-slate-900 mb-6 leading-[1.1]">
                 Unify Your <br />
@@ -420,7 +420,7 @@ modern tools, strategic thinking, and a commitment to excellence
               </span>
             </h2>
             <p className="text-xl text-slate-400 max-w-2xl mx-auto mb-12 font-light">
-              Join the forward-thinking institutions and professionals scaling their potential with Frontier Wox Technologies.
+              Join the forward-thinking institutions and professionals scaling their potential with FrontierWox Tech.
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center gap-6">

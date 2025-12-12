@@ -19,7 +19,7 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
 };
 
-// --- DATA: FRONTIER WOX TECHNOLOGIES ---
+// --- DATA: FRONTIERWOX TECHNOLOGIES ---
 const directContact = [
   {
     title: "Phone",

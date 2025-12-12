@@ -137,7 +137,7 @@ export default function Header() {
           <Link to="/" className="flex-shrink-0 group">
 <img
   src={logo}
-  alt="Frontier Wox Technologies"
+  alt="FrontierWox Technologies"
   className={`
     transition-all duration-300
     ${isScrolled ? "h-10 lg:h-14" : "h-16 lg:h-24"}

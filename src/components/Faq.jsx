@@ -7,7 +7,7 @@ import { profile3 } from "../assets/image";
 
 const accordionData = [
   {
-    title: "What services does Frontier Wox Technologies offer?",
+    title: "What services does FrontierWox Tech offer?",
     desc: "We provide Web Design, Web & Mobile App Development, Graphic Design, CMS-based Development, and Business Portfolio Sites. Our solutions are tailored to each client using modern technologies.",
   },
   {
@@ -15,7 +15,7 @@ const accordionData = [
     desc: "Yes — we create professional, elegant, and high-performing portfolio websites that strengthen brand identity and help businesses showcase their work effectively.",
   },
   {
-    title: "Can Frontier Wox Technologies revamp my existing website?",
+    title: "Can FrontierWox Tech revamp my existing website?",
     desc: "Absolutely. Whether it’s UI/UX improvements, performance upgrades, SEO fixes, or a complete redesign, we modernize websites to align with today’s standards.",
   },
   {

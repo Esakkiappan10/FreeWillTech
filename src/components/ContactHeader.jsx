@@ -249,7 +249,7 @@ const ContactInfo = () => {
       </div>
       <h4 className="text-lg font-bold text-slate-900 mb-1">Professional Network</h4>
       <p className="text-xl font-bold text-slate-700 group-hover:text-[#0077b5] transition-colors truncate">
-        Frontier Wox Technologies
+        FrontierWox Tech
       </p>
       <p className="text-sm text-slate-400 mt-2 font-medium flex items-center gap-1">
         Connect for Collaborations <ArrowUpRight size={14} />
@@ -272,7 +272,7 @@ const ContactInfo = () => {
       <div className="w-14 h-14 rounded-2xl bg-pink-100 text-pink-600 flex items-center justify-center mb-6 group-hover:bg-gradient-to-tr group-hover:from-yellow-500 group-hover:via-red-500 group-hover:to-purple-600 group-hover:text-white transition-all duration-300">
         <Instagram size={28} />
       </div>
-      <h4 className="text-lg font-bold text-slate-900 mb-1">Life at Frontier Wox</h4>
+      <h4 className="text-lg font-bold text-slate-900 mb-1">Life at FrontierWox</h4>
       <p className="text-xl font-bold text-slate-700 group-hover:text-pink-600 transition-colors">
         @frontierwox_tech
       </p>
