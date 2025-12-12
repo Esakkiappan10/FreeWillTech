@@ -274,7 +274,7 @@ const ContactInfo = () => {
       </div>
       <h4 className="text-lg font-bold text-slate-900 mb-1">Life at Frontier Wox</h4>
       <p className="text-xl font-bold text-slate-700 group-hover:text-pink-600 transition-colors">
-        @freewill_tech
+        @frontierwox_tech
       </p>
       <p className="text-sm text-slate-400 mt-2 font-medium flex items-center gap-1">
         Follow our Journey <ArrowUpRight size={14} />

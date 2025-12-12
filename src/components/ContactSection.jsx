@@ -24,7 +24,7 @@ export default function ContactSection() {
 
   const handleSubmit = (e) => {
   e.preventDefault();
-  window.location.href = "mailto:contact@freewilltech.in";
+  window.location.href = "mailto:hr@frontierwox.in";
 };
 
   return (

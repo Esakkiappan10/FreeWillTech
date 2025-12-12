@@ -250,7 +250,7 @@ export default function Header() {
           <div className="space-y-3 text-sm text-slate-600">
             <div className="flex items-center gap-3">
               <Mail size={16} className="text-[#FE861B]" />
-              <span>contact@freewilltech.in</span>
+              <span>hr@frontierwox.in</span>
             </div>
             <div className="flex items-center gap-3">
               <Phone size={16} className="text-[#1E9CD7]" />
